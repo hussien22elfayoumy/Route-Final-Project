@@ -1,5 +1,7 @@
+import RoutesProvider from './providers/RoutesProvider';
+
 function App() {
-  return <h1 className="text-center text-lg text-red-500">Home</h1>;
+  return <RoutesProvider />;
 }
 
 export default App;
