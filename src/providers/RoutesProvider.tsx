@@ -13,7 +13,7 @@ import WishList from '../pages/WishList';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <MainLayout />,
     children: [
       {
@@ -61,5 +61,5 @@ const router = createBrowserRouter([
 ]);
 
 export default function RoutesProvider() {
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router}></RouterProvider>;
 }
