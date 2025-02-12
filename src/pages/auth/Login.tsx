@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { onLoginFormSubmit } from '../../utils/auth';
 import { loginFormSchema, LoginFormType } from '../../types/schemas/auth-schema';
+import { useUserCtx } from '../../contexts/UserContext';
 
 export default function Login() {
   const {
@@ -13,15 +14,16 @@ export default function Login() {
     resolver: zodResolver(loginFormSchema),
   });
   const navigate = useNavigate();
+  const { handleUser } = useUserCtx();
 
   return (
     <div className="pt-24">
-      <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow xl:p-0">
+      <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow">
         <h1 className="mb-5 text-center text-xl font-bold leading-tight tracking-tight">
           Sign in to your account
         </h1>
         <form
-          onSubmit={handleSubmit((values) => onLoginFormSubmit(values, navigate))}
+          onSubmit={handleSubmit((values) => onLoginFormSubmit(values, navigate, handleUser))}
           className="flex flex-col gap-4 md:gap-6"
         >
           <div>

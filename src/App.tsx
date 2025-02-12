@@ -11,6 +11,7 @@ import Signup from './pages/auth/SignUp';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import VerifyResetCode from './pages/auth/VerifyResetCode';
+import UserContextProvider from './contexts/UserContext';
 
 const router = createBrowserRouter([
   {
@@ -66,7 +67,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
+  );
 }
 
 export default App;

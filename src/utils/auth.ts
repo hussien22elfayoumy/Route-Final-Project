@@ -7,6 +7,7 @@ import {
   SignUpFormType,
   VerifyResetCodeType,
 } from '../types/schemas/auth-schema';
+import { UserType } from '../contexts/UserContext';
 
 // TODO: Signup
 export async function onSignUpFormSubmit(values: SignUpFormType, navigate: NavigateFunction) {
@@ -30,7 +31,11 @@ export async function onSignUpFormSubmit(values: SignUpFormType, navigate: Navig
 }
 
 // TODO: Login
-export async function onLoginFormSubmit(values: LoginFormType, navigate: NavigateFunction) {
+export async function onLoginFormSubmit(
+  values: LoginFormType,
+  navigate: NavigateFunction,
+  handleUser: (user: UserType) => void
+) {
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/signin`, {
       method: 'POST',
@@ -48,8 +53,9 @@ export async function onLoginFormSubmit(values: LoginFormType, navigate: Navigat
       name: data.user.name,
       email: data.user.email,
     };
+    handleUser(loggenInUser);
 
-    localStorage.setItem('loggenInUser', JSON.stringify(loggenInUser));
+    localStorage.setItem('loggedInUser', JSON.stringify(loggenInUser));
 
     toast.success(`${data.message}: Welcome ${data.user.name} to fresh cart`);
 

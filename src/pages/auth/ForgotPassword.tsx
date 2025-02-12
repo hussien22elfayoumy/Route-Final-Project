@@ -17,7 +17,7 @@ export default function ForgotPassword() {
 
   return (
     <div className="pt-24">
-      <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow xl:p-0">
+      <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow">
         <h1 className="mb-5 text-center text-xl font-bold leading-tight tracking-tight">
           Forgot your password
         </h1>
