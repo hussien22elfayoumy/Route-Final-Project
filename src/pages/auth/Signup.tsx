@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signUpFormSchema, SignUpFormType } from '../../types/schemas/signup-form-schema';
 import onSignUpFormSubmit from '../../utils/on-signup-form-submit';
 
@@ -12,6 +12,7 @@ export default function SignUp() {
   } = useForm<SignUpFormType>({
     resolver: zodResolver(signUpFormSchema),
   });
+  const navigate = useNavigate();
 
   return (
     <div className="py-5">
@@ -20,7 +21,7 @@ export default function SignUp() {
           Create a new account now
         </h1>
         <form
-          onSubmit={handleSubmit(onSignUpFormSubmit)}
+          onSubmit={handleSubmit((values) => onSignUpFormSubmit(values, navigate))}
           className="flex flex-col gap-4"
         >
           <div>
@@ -111,7 +112,7 @@ export default function SignUp() {
           <button
             disabled={isSubmitting}
             type="submit"
-            className="h-11 w-full self-end rounded-lg bg-color-base px-4 py-2 text-center font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-emerald-600"
+            className="h-11 w-full self-end rounded-lg bg-color-base px-4 py-2 text-center font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-emerald-600 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
             {isSubmitting ? 'Creating your account' : 'Create an account'}
           </button>
