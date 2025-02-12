@@ -5,6 +5,7 @@ import {
   resetPasswordFormsType,
 } from '../../types/schemas/reset-password-form-schema';
 import onResetPasswordFormSubmit from '../../utils/on-reset-password-form-submit';
+import { useNavigate } from 'react-router-dom';
 
 export default function ResetPassword() {
   const {
@@ -14,10 +15,11 @@ export default function ResetPassword() {
   } = useForm<resetPasswordFormsType>({
     resolver: zodResolver(resetPasswordFormsSchema),
   });
+  const navigate = useNavigate();
 
   return (
     <div
-      onSubmit={handleSubmit(onResetPasswordFormSubmit)}
+      onSubmit={handleSubmit((values) => onResetPasswordFormSubmit(values, navigate))}
       className="pt-24"
     >
       <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow xl:p-0">
@@ -77,7 +79,7 @@ export default function ResetPassword() {
 
           <button
             type="submit"
-            className="h-11 self-end rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600"
+            className="h-11 w-full self-end rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600"
           >
             {isSubmitting ? 'Resetting your password' : 'Reset password'}
           </button>
