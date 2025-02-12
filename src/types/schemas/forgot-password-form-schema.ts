@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const forgotPasswordFormSchema = z.object({
-  email: z.string().email().min(1, 'Email is required').trim().toLowerCase(),
+  email: z.string().min(1, 'Email is required').email().trim().toLowerCase(),
 });
 
-export type forgotPasswordFormType = z.infer<typeof forgotPasswordFormSchema>;
+export type ForgotPasswordFormType = z.infer<typeof forgotPasswordFormSchema>;
