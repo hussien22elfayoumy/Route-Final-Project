@@ -6,7 +6,7 @@ export const signUpFormSchema = z
       .string()
       .min(5, 'Name must be at least 5 chars')
       .max(50, 'Name must be at most 50 chars'),
-    email: z.string().email().min(1, 'Email is required').trim().toLowerCase(),
+    email: z.string().min(1, 'Email is required').email().trim().toLowerCase(),
     phone: z
       .string()
       .min(1, 'Phone is required')

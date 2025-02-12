@@ -2,7 +2,8 @@ import { z } from 'zod';
 
 export const resetPasswordFormsSchema = z
   .object({
-    password: z
+    email: z.string().min(1, 'Email is required').email().trim().toLowerCase(),
+    newPassword: z
       .string()
       .min(1, 'Password is required')
       .min(8, 'Password must be at least 8 characters')
@@ -13,7 +14,7 @@ export const resetPasswordFormsSchema = z
       .trim(),
     rePassword: z.string(),
   })
-  .refine((values) => values.password === values.rePassword, {
+  .refine((values) => values.newPassword === values.rePassword, {
     message: 'Password must be match',
     path: ['rePassword'],
   });
