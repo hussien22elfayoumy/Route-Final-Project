@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = false;
   return (
-    <nav className="fixed start-0 top-0 z-20 w-full border-b border-gray-200 bg-white shadow-sm">
+    <nav className="bg-card-bg border-border-light fixed start-0 top-0 z-20 w-full border-b shadow-sm">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link
           to="/"
@@ -63,7 +63,7 @@ export default function Navbar() {
           className={`${isOpen ? 'hidden' : ''} w-full items-center justify-between md:order-1 md:flex md:w-auto`}
           id="navbar-sticky"
         >
-          <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse">
+          <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-slate-50 md:p-0 rtl:space-x-reverse">
             <li>
               <NavLink
                 to="/"
