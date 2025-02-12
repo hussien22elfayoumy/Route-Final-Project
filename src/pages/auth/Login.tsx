@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginFormSchema, LoginFormType } from '../../types/schemas/login-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import onLoginFormSubmit from '../../utils/on-login-form-submit';
@@ -12,6 +12,7 @@ export default function Login() {
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
   });
+  const navigate = useNavigate();
 
   return (
     <div className="pt-24">
@@ -20,7 +21,7 @@ export default function Login() {
           Sign in to your account
         </h1>
         <form
-          onSubmit={handleSubmit(onLoginFormSubmit)}
+          onSubmit={handleSubmit((values) => onLoginFormSubmit(values, navigate))}
           className="flex flex-col gap-4 md:gap-6"
         >
           <div>
@@ -68,7 +69,7 @@ export default function Login() {
           <button
             disabled={isSubmitting}
             type="submit"
-            className="h-11 w-full self-end rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600"
+            className="h-11 w-full self-end rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
             {isSubmitting ? 'getting you in' : 'Sign in'}
           </button>

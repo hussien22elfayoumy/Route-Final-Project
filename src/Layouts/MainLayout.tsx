@@ -9,7 +9,18 @@ export default function MainLayout() {
       <Navbar />
       <main className="container mx-auto min-h-screen px-5 pt-[70px]">
         <Outlet />
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            duration: 5000,
+            removeDelay: 1000,
+            success: {
+              duration: 4000,
+            },
+            error: {
+              duration: 6000,
+            },
+          }}
+        />
       </main>
       <Footer />
     </div>
