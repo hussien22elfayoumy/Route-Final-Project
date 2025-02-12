@@ -24,12 +24,13 @@ export default function Navbar() {
           {isLoggedIn ? (
             <UserMenu />
           ) : (
-            <button
+            <Link
+              to="/login"
               type="button"
               className="rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600"
             >
               Login now
-            </button>
+            </Link>
           )}
 
           <button

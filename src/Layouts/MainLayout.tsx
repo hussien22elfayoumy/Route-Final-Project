@@ -4,9 +4,9 @@ import Footer from '../components/Footer';
 
 export default function MainLayout() {
   return (
-    <div className="text-text-base bg-gray-100">
+    <div className="bg-gray-100 text-text-base">
       <Navbar />
-      <main className="container mx-auto min-h-screen pt-20">
+      <main className="container mx-auto min-h-screen px-5 pt-20">
         <Outlet />
       </main>
       <Footer />
