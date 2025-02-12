@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { HiArrowLeftStartOnRectangle } from 'react-icons/hi2';
 import { NavLink } from 'react-router-dom';
+import { useUserCtx } from '../contexts/UserContext';
+import { handleLogout } from '../utils/auth';
 
 export default function UserMenu() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
+  const { user, handleUser } = useUserCtx();
 
   return (
     <div className="relative">
       <button
         onClick={() => setOpenUserMenu((prev) => !prev)}
         type="button"
-        className="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 md:me-0 dark:focus:ring-gray-600"
+        className="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-color-base md:me-0"
         id="user-menu-button"
         aria-expanded="false"
         data-dropdown-toggle="user-dropdown"
@@ -29,9 +32,8 @@ export default function UserMenu() {
         } list-none divide-y divide-gray-100 rounded-lg bg-slate-50 text-base shadow-sm`}
         id="user-dropdown"
       >
-        <div className="border-b border-b-gray-300 px-4 py-2">
-          <span className="block text-sm text-gray-900">user name</span>
-          <span className="block truncate text-sm text-gray-500">utest@email.com</span>
+        <div className="w-[150px] border-b border-b-gray-300 px-2 py-2">
+          <p className="block text-center text-sm font-thin text-gray-900">{user?.name}</p>
         </div>
         <ul
           className="py-2"
@@ -63,8 +65,9 @@ export default function UserMenu() {
           </li>
           <li className="mt-2 px-2 text-center">
             <button
+              onClick={() => handleLogout(handleUser)}
               type="button"
-              className="flex w-full items-center gap-1 rounded-lg bg-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-600"
+              className="flex w-full items-center justify-center gap-1 rounded-lg bg-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-600"
             >
               <HiArrowLeftStartOnRectangle className="text-lg" />
               <span>Logout</span>

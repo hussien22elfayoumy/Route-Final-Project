@@ -8,7 +8,7 @@ export interface UserType {
 
 interface UserContextType {
   user: UserType | null;
-  handleUser: (loggedInUser: UserType) => void;
+  handleUser: (loggedInUser: UserType | null) => void;
 }
 const userContext = createContext<UserContextType>({
   user: null,
@@ -20,7 +20,7 @@ export default function UserContextProvider({ children }: Readonly<{ children: R
     JSON.parse(localStorage.getItem('loggedInUser')!)
   );
 
-  function handleUser(loggedInUser: UserType) {
+  function handleUser(loggedInUser: UserType | null) {
     setUser(loggedInUser);
   }
 

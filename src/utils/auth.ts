@@ -139,3 +139,8 @@ export async function onResetPasswordFormSubmit(
     toast.error(`Error: ${(err as Error).message}`);
   }
 }
+
+export function handleLogout(handleUser: (user: UserType | null) => void) {
+  localStorage.removeItem('loggedInUser');
+  handleUser(null);
+}

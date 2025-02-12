@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <div className="bg-gray-100 text-text-base">
       <Navbar />
-      <main className="container mx-auto min-h-screen px-5 pt-[70px]">
+      <main className="container mx-auto min-h-screen px-5 pt-[65px]">
         <Outlet />
         <Toaster
           toastOptions={{
