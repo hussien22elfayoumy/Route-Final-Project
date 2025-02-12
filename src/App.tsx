@@ -12,6 +12,8 @@ import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
 import VerifyResetCode from './pages/auth/VerifyResetCode';
 import UserContextProvider from './contexts/UserContext';
+import ProtectdRoute from './components/ProtectdRoute';
+import AllOrders from './pages/AllOrders';
 
 const router = createBrowserRouter([
   {
@@ -24,23 +26,43 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <Login />,
+        element: (
+          <ProtectdRoute type="public">
+            <Login />
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'sign-up',
-        element: <Signup />,
+        element: (
+          <ProtectdRoute type="public">
+            <Signup />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'forgot-password',
-        element: <ForgotPassword />,
+        element: (
+          <ProtectdRoute type="public">
+            <ForgotPassword />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'reset-password',
-        element: <ResetPassword />,
+        element: (
+          <ProtectdRoute type="public">
+            <ResetPassword />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'verify-code',
-        element: <VerifyResetCode />,
+        element: (
+          <ProtectdRoute type="public">
+            <VerifyResetCode />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'products',
@@ -48,7 +70,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart',
-        element: <Cart />,
+        element: (
+          <ProtectdRoute type="protected">
+            <Cart />
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'brands',
@@ -60,7 +86,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'wishList',
-        element: <WishList />,
+        element: (
+          <ProtectdRoute type="protected">
+            <WishList />
+          </ProtectdRoute>
+        ),
+      },
+      {
+        path: 'all-orders',
+        element: (
+          <ProtectdRoute type="protected">
+            <AllOrders />
+          </ProtectdRoute>
+        ),
       },
     ],
   },
