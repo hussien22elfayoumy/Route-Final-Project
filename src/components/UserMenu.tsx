@@ -25,7 +25,7 @@ export default function UserMenu() {
       </button>
       <div
         className={`absolute right-[50%] top-[25px] z-50 my-4 translate-x-[50%] border shadow-lg ${
-          openUserMenu ? 'hidden' : ''
+          openUserMenu ? '' : 'hidden'
         } list-none divide-y divide-gray-100 rounded-lg bg-slate-50 text-base shadow-sm`}
         id="user-dropdown"
       >

@@ -61,7 +61,7 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`${isOpen ? 'hidden' : ''} w-full items-center justify-between md:order-1 md:flex md:w-auto`}
+          className={`${isOpen ? '' : 'hidden'} w-full items-center justify-between md:order-1 md:flex md:w-auto`}
           id="navbar-sticky"
         >
           <ul className="mt-4 flex flex-col rounded-lg p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-slate-50 md:p-0 rtl:space-x-reverse">
