@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const isLoggedIn = false;
   return (
-    <nav className="bg-card-bg border-border-light fixed start-0 top-0 z-20 w-full border-b shadow-sm">
+    <nav className="fixed start-0 top-0 z-20 w-full border-b border-border-light bg-card-bg shadow-sm">
       <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
         <Link
           to="/"
@@ -50,9 +50,9 @@ export default function Navbar() {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
