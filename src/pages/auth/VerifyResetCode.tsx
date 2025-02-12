@@ -1,11 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  verifyResetCodeSchema,
-  VerifyResetCodeType,
-} from '../../types/schemas/forgot-password-form-schema';
+
 import { onVerifyCodeFormSubmit } from '../../utils/auth';
+import { verifyResetCodeSchema, VerifyResetCodeType } from '../../types/schemas/auth-schema';
 
 export default function VerifyResetCode() {
   const {

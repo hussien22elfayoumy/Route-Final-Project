@@ -1,11 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  forgotPasswordFormSchema,
-  ForgotPasswordFormType,
-} from '../../types/schemas/forgot-password-form-schema';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { onForgotPasswordFormSubmit } from '../../utils/auth';
+import { forgotPasswordFormSchema, ForgotPasswordFormType } from '../../types/schemas/auth-schema';
 
 export default function ForgotPassword() {
   const {

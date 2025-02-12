@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginFormSchema, LoginFormType } from '../../types/schemas/login-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { onLoginFormSubmit } from '../../utils/auth';
+import { loginFormSchema, LoginFormType } from '../../types/schemas/auth-schema';
 
 export default function Login() {
   const {

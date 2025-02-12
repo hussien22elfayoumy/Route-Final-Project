@@ -1,11 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import {
-  resetPasswordFormsSchema,
-  resetPasswordFormsType,
-} from '../../types/schemas/reset-password-form-schema';
+
 import { useNavigate } from 'react-router-dom';
 import { onResetPasswordFormSubmit } from '../../utils/auth';
+import { resetPasswordFormsSchema, resetPasswordFormsType } from '../../types/schemas/auth-schema';
 
 export default function ResetPassword() {
   const {

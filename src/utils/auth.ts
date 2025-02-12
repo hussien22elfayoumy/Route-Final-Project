@@ -1,18 +1,17 @@
 import { NavigateFunction } from 'react-router-dom';
-import { resetPasswordFormsType } from '../types/schemas/reset-password-form-schema';
 import toast from 'react-hot-toast';
-
-import { SignUpFormType } from '../types/schemas/signup-form-schema';
-import { LoginFormType } from '../types/schemas/login-form-schema';
 import {
   ForgotPasswordFormType,
+  LoginFormType,
+  resetPasswordFormsType,
+  SignUpFormType,
   VerifyResetCodeType,
-} from '../types/schemas/forgot-password-form-schema';
+} from '../types/schemas/auth-schema';
 
 // TODO: Signup
 export async function onSignUpFormSubmit(values: SignUpFormType, navigate: NavigateFunction) {
   try {
-    const res = await fetch(`https://ecommerce.routemisr.com/api/v1/auth/signup`, {
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/signup`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +64,6 @@ export async function onForgotPasswordFormSubmit(
   values: ForgotPasswordFormType,
   navigate: NavigateFunction
 ) {
-  console.log(values);
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/forgotPasswords`, {
       method: 'POST',
@@ -75,9 +73,6 @@ export async function onForgotPasswordFormSubmit(
       body: JSON.stringify(values),
     });
     const data = await res.json();
-
-    console.log('res', res);
-    console.log('data', data);
 
     if (!res.ok) throw new Error(data.message);
 
@@ -94,7 +89,6 @@ export async function onVerifyCodeFormSubmit(
   values: VerifyResetCodeType,
   navigate: NavigateFunction
 ) {
-  console.log(values);
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/verifyResetCode`, {
       method: 'POST',
@@ -104,9 +98,6 @@ export async function onVerifyCodeFormSubmit(
       body: JSON.stringify(values),
     });
     const data = await res.json();
-
-    console.log('res', res);
-    console.log('data', data);
 
     if (!res.ok) throw new Error(data.message);
 
@@ -123,7 +114,6 @@ export async function onResetPasswordFormSubmit(
   values: resetPasswordFormsType,
   navigate: NavigateFunction
 ) {
-  console.log(values);
   try {
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/resetPassword`, {
       method: 'PUT',
@@ -133,9 +123,6 @@ export async function onResetPasswordFormSubmit(
       body: JSON.stringify(values),
     });
     const data = await res.json();
-
-    console.log('res', res);
-    console.log('data', data);
 
     if (!res.ok) throw new Error(data.message);
 
