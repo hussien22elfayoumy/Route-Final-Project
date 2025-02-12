@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { signUpFormSchema, SignUpFormType } from '../../types/schemas/signup-form-schema';
-import onSignUpFormSubmit from '../../utils/on-signup-form-submit';
+import { onSignUpFormSubmit } from '../../utils/auth';
 
 export default function SignUp() {
   const {

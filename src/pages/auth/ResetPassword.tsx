@@ -4,8 +4,8 @@ import {
   resetPasswordFormsSchema,
   resetPasswordFormsType,
 } from '../../types/schemas/reset-password-form-schema';
-import onResetPasswordFormSubmit from '../../utils/on-reset-password-form-submit';
 import { useNavigate } from 'react-router-dom';
+import { onResetPasswordFormSubmit } from '../../utils/auth';
 
 export default function ResetPassword() {
   const {

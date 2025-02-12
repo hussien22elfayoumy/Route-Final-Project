@@ -5,7 +5,7 @@ import {
   verifyResetCodeSchema,
   VerifyResetCodeType,
 } from '../../types/schemas/forgot-password-form-schema';
-import { onVerifyCodeFormSubmit } from '../../utils/on-forgot-password-form-submit';
+import { onVerifyCodeFormSubmit } from '../../utils/auth';
 
 export default function VerifyResetCode() {
   const {

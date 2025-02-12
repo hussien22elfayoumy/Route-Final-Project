@@ -5,7 +5,7 @@ import {
   ForgotPasswordFormType,
 } from '../../types/schemas/forgot-password-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { onForgotPasswordFormSubmit } from '../../utils/on-forgot-password-form-submit';
+import { onForgotPasswordFormSubmit } from '../../utils/auth';
 
 export default function ForgotPassword() {
   const {
