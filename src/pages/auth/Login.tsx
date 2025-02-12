@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { loginFormSchema, LoginFormType } from '../../types/schemas/login-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import onLoginFormSubmit from '../../utils/on-login-form-submit';
 
 export default function Login() {
   const {
@@ -11,10 +12,6 @@ export default function Login() {
   } = useForm<LoginFormType>({
     resolver: zodResolver(loginFormSchema),
   });
-
-  async function onLoginFormSubmit(values: LoginFormType) {
-    console.log(values);
-  }
 
   return (
     <div className="pt-24">

@@ -2,6 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { signUpFormSchema, SignUpFormType } from '../../types/schemas/signup-form-schema';
+import onSignUpFormSubmit from '../../utils/on-signup-form-submit';
 
 export default function SignUp() {
   const {
@@ -11,10 +12,6 @@ export default function SignUp() {
   } = useForm<SignUpFormType>({
     resolver: zodResolver(signUpFormSchema),
   });
-
-  async function onSignUpFormSubmit(values: SignUpFormType) {
-    console.log(values);
-  }
 
   return (
     <div className="py-5">

@@ -5,6 +5,7 @@ import {
   ForgotPasswordFormType,
 } from '../../types/schemas/forgot-password-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import onForgotPasswordFormSubmit from '../../utils/on-forgot-password-form-submit';
 
 export default function ForgotPassword() {
   const {
@@ -14,10 +15,6 @@ export default function ForgotPassword() {
   } = useForm<ForgotPasswordFormType>({
     resolver: zodResolver(forgotPasswordFormSchema),
   });
-
-  async function onForgotPasswordFormSubmit(values: ForgotPasswordFormType) {
-    console.log(values);
-  }
 
   return (
     <div className="pt-24">

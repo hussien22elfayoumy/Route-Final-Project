@@ -4,6 +4,7 @@ import {
   resetPasswordFormsSchema,
   resetPasswordFormsType,
 } from '../../types/schemas/reset-password-form-schema';
+import onResetPasswordFormSubmit from '../../utils/on-reset-password-form-submit';
 
 export default function ResetPassword() {
   const {
@@ -14,9 +15,6 @@ export default function ResetPassword() {
     resolver: zodResolver(resetPasswordFormsSchema),
   });
 
-  async function onResetPasswordFormSubmit(values: resetPasswordFormsType) {
-    console.log(values);
-  }
   return (
     <div
       onSubmit={handleSubmit(onResetPasswordFormSubmit)}
