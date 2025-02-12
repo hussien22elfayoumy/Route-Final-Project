@@ -10,6 +10,7 @@ import Login from './pages/auth/Login';
 import Signup from './pages/auth/SignUp';
 import ForgotPassword from './pages/auth/ForgotPassword';
 import ResetPassword from './pages/auth/ResetPassword';
+import VerifyResetCode from './pages/auth/VerifyResetCode';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'reset-password',
         element: <ResetPassword />,
+      },
+      {
+        path: 'verify-code',
+        element: <VerifyResetCode />,
       },
       {
         path: 'products',

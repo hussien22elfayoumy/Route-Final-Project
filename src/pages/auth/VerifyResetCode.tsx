@@ -1,19 +1,21 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  forgotPasswordFormSchema,
-  ForgotPasswordFormType,
-} from '../../types/schemas/forgot-password-form-schema';
+import { loginFormSchema, LoginFormType } from '../../types/schemas/login-form-schema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { onForgotPasswordFormSubmit } from '../../utils/on-forgot-password-form-submit';
+import onLoginFormSubmit from '../../utils/on-login-form-submit';
+import {
+  verifyResetCodeSchema,
+  VerifyResetCodeType,
+} from '../../types/schemas/forgot-password-form-schema';
+import { onVerifyCodeFormSubmit } from '../../utils/on-forgot-password-form-submit';
 
-export default function ForgotPassword() {
+export default function VerifyResetCode() {
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<ForgotPasswordFormType>({
-    resolver: zodResolver(forgotPasswordFormSchema),
+  } = useForm<VerifyResetCodeType>({
+    resolver: zodResolver(verifyResetCodeSchema),
   });
   const navigate = useNavigate();
 
@@ -21,27 +23,27 @@ export default function ForgotPassword() {
     <div className="pt-24">
       <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow xl:p-0">
         <h1 className="mb-5 text-center text-xl font-bold leading-tight tracking-tight">
-          Forgot your password
+          Check your email to verfiy reset code
         </h1>
         <form
-          onSubmit={handleSubmit((values) => onForgotPasswordFormSubmit(values, navigate))}
+          onSubmit={handleSubmit((values) => onVerifyCodeFormSubmit(values, navigate))}
           className="flex flex-col gap-4 md:gap-6"
         >
           <div>
             <label
-              htmlFor="email"
+              htmlFor="resetCode"
               className="mb-2 block text-sm font-medium"
             >
-              Your email
+              reset code
             </label>
             <input
-              type="email"
-              id="email"
+              type="text"
+              id="resetCode"
               className="block h-11 w-full rounded-lg border-2 border-border-dark bg-card-bg p-2.5 shadow-sm focus:border-2 focus:border-color-base focus:outline-none focus:ring-color-base active:border-color-base"
-              placeholder="name@company.com"
-              {...register('email')}
+              placeholder="reset code"
+              {...register('resetCode')}
             />
-            {errors.email && <p className="text-red-400">{errors.email.message}</p>}
+            {errors.resetCode && <p className="text-red-400">{errors.resetCode.message}</p>}
           </div>
 
           <button
@@ -49,16 +51,16 @@ export default function ForgotPassword() {
             type="submit"
             className="h-11 w-full self-end rounded-lg bg-emerald-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-emerald-600 focus:outline-none focus:ring-4 focus:ring-emerald-600 disabled:cursor-not-allowed disabled:bg-slate-400"
           >
-            {isSubmitting ? 'Resetting your password' : 'Reset password'}
+            {isSubmitting ? 'verifiying' : 'Verify reset code'}
           </button>
 
           <p className="text-sm text-text-dark">
-            Remember your password?{' '}
+            Didn't recive a reset code / Expired?{' '}
             <Link
-              to="/login"
+              to="/forgot-password"
               className="font-medium text-color-base hover:underline"
             >
-              Login in here
+              try here
             </Link>
           </p>
         </form>
