@@ -2,6 +2,7 @@ export interface ICategory {
   name: string;
   image: string;
   slug: string;
+  _id: string;
 }
 
 export interface IProduct {
@@ -44,6 +45,17 @@ export async function fetchAllCategories(): Promise<ICategory[]> {
   const data = await res.json();
 
   if (!res.ok) throw new Error('Error Fetching all categories');
+
+  return data.data;
+}
+
+//TODO: get specific category
+
+export async function fetchCategoryDetails(id: string | undefined): Promise<ICategory> {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/categories/${id}`);
+  const data = await res.json();
+
+  if (!res.ok) throw new Error('Error getting Category Details');
 
   return data.data;
 }

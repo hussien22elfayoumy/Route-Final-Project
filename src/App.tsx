@@ -17,6 +17,7 @@ import AllOrders from './pages/AllOrders';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ProductsDetails from './pages/ProductsDetails';
+import CategoryDetails from './pages/CategoryDetails';
 
 const router = createBrowserRouter([
   {
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
       {
         path: 'categories',
         element: <Categories />,
+      },
+      {
+        path: 'categories/:categoryId/:category',
+        element: <CategoryDetails />,
       },
       {
         path: 'wishList',

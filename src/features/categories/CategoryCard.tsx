@@ -5,7 +5,7 @@ export default function CategoryCard({ category }: { category: ICategory }) {
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
       <div className="h-[300px]">
-        <Link to="#">
+        <Link to={`/categories/${category._id}/${category.name}`}>
           <img
             className="h-[300px] w-full rounded-t-lg object-cover"
             src={category.image}
