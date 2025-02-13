@@ -1,42 +1,14 @@
-import { Link, useParams } from 'react-router-dom';
-import { fetchProductDetails, IProduct } from '../../utils/api';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { IProduct } from '../../utils/api';
 import ProductDetailsImageSlider from './ProductDetailsImageSlider';
 
-export default function ProductDetailsCard() {
-  const { productId } = useParams();
-  const [productDetails, setProductDetails] = useState<IProduct>();
-  const [error, setError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    async function getProductDetails() {
-      try {
-        setIsLoading(true);
-        const data = await fetchProductDetails(productId);
-
-        setProductDetails(data);
-      } catch (err) {
-        console.log(err);
-        setError((err as Error).message);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    getProductDetails();
-  }, []);
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
+export default function ProductDetailsCard({
+  productDetails,
+}: {
+  productDetails: IProduct | undefined;
+}) {
   return (
-    <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-5 md:flex-row">
+    <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-5 md:flex-row">
       <div className="w-full md:w-1/3">
         <ProductDetailsImageSlider imgs={productDetails?.images} />
       </div>

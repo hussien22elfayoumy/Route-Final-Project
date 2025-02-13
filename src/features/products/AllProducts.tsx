@@ -1,12 +1,13 @@
 import ProductCard from './ProductCard';
 
 import { useProducts } from '../../hooks/useProducts';
+import Loader from '../../components/Loader';
 
 export default function AllProducts() {
   const { data, error, isLoading, isError } = useProducts();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError) {

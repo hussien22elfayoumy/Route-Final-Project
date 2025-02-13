@@ -5,7 +5,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
       <div className="h-[300px]">
-        <Link to={`/products/${product.id}`}>
+        <Link to={`/products/${product.id}/${product.category.name}`}>
           <img
             className="h-[300px] w-full rounded-t-lg object-cover"
             src={product.imageCover}
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
         <h5 className="mb-5 text-lg font-semibold tracking-tight text-text-dark">
           <Link
-            to={`/products/${product.id}`}
+            to={`/products/${product.id}/${product.category.name}`}
             className="truncate"
           >
             {product.title.slice(0, 30)} ...

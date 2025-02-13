@@ -2,12 +2,13 @@ import Slider from 'react-slick';
 import { Settings } from 'react-slick';
 
 import { useCategories } from '../hooks/useCategories';
+import Loader from './Loader';
 
 export default function CategoriesSlider() {
   const { data, error, isLoading, isError } = useCategories();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError) {
