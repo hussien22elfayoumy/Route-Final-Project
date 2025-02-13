@@ -1,3 +1,9 @@
+import AllProducts from '../features/products/AllProducts';
+
 export default function Products() {
-  return <div>Products</div>;
+  return (
+    <section className="py-10">
+      <AllProducts />
+    </section>
+  );
 }
