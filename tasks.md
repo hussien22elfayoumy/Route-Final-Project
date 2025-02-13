@@ -8,16 +8,14 @@
 - React-Router-Dom
 - Context API
 - React Query
-- Redux
 - React-Hook-Form
 - Zod validation
-- Axios
 
 ## FEATURES
 
 ### AUTH
 
-- [ ] Signup `${BASE_URL}/auth/signup`
+- [x] Signup `${BASE_URL}/auth/signup`
 - Form data
   - name
   - email
@@ -26,47 +24,56 @@
   - phone
 - Update UI When form is submiting and when there are errors
 
-- [ ] SignIn `${BASE_URL}/auth/signin`
+- [x] SignIn `${BASE_URL}/auth/signin`
 - Form data
   - email
   - password
 - set token in localStorage
 - Update UI when invalid email or password
 
-- [ ] Forget password `${BASE_URL}/auth/forgotPasswords`
+- [x] Forget password `${BASE_URL}/auth/forgotPasswords`
 - Form data
 
   - email
 
-- [ ] Reset password `${BASE_URL}/auth/resetPassword`
+- [x] Verify Reset Code `${BASE_URL}/auth/verifyResetCode`
+- Form data
+
+  - reset code
+
+- [x] Reset password `${BASE_URL}/auth/resetPassword`
 - Form data
 
   - email
   - new password
+  - rePassword
 
-- [ ] SignOut
+- [x] SignOut
 
   - remove token from localStorage
 
-- [ ] Protected routes
+- [x] Protected routes
   - Cart
   - Checkout
   - Orders
 
 ### PRODUCTS
 
-- [ ] Get all Products `${BASE_URL}/products`
-- [ ] Get specific Product `${BASE_URL}/products/:id`
+- [x] Get all Products `${BASE_URL}/products`
+- [x] Get specific Product `${BASE_URL}/products/:id`
+- [x] Display related products to this product
 
 ### CATIGORIES
 
-- [ ] Get All Categories `${BASE_URL}/categories`
-- [ ] Get specific category `${BASE_URL}/categories/:id`
+- [x] Get All Categories `${BASE_URL}/categories`
+- [x] Get specific category `${BASE_URL}/categories/:id`
+- [x] Display related products to this category
 
 ### BRANDS
 
-- [ ] Get All Categories `${BASE_URL}/brands`
-- [ ] Get specific category `${BASE_URL}/brands/:id`
+- [x] Get All Categories `${BASE_URL}/brands`
+- [x] Get specific brand `${BASE_URL}/brands/:id`
+- [x] Display related products to this brand
 
 ### WISHLIST
 
