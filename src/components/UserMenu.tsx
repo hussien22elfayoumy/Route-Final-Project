@@ -3,6 +3,7 @@ import { HiArrowLeftStartOnRectangle } from 'react-icons/hi2';
 import { NavLink } from 'react-router-dom';
 import { useUserCtx } from '../contexts/UserContext';
 import { handleLogout } from '../utils/auth';
+import UserImg from '../assets/userImg.png';
 
 export default function UserMenu() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
@@ -13,7 +14,7 @@ export default function UserMenu() {
       <button
         onClick={() => setOpenUserMenu((prev) => !prev)}
         type="button"
-        className="flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-color-base md:me-0"
+        className="flex rounded-full bg-gray-800 text-sm ring-2 ring-color-base focus:ring-4 focus:ring-color-base md:me-0"
         id="user-menu-button"
         aria-expanded="false"
         data-dropdown-toggle="user-dropdown"
@@ -22,7 +23,7 @@ export default function UserMenu() {
         <span className="sr-only">Open user menu</span>
         <img
           className="h-8 w-8 rounded-full"
-          src="/docs/images/people/profile-picture-3.jpg"
+          src={UserImg}
           alt="user photo"
         />
       </button>
