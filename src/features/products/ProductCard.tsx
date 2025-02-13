@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../utils/api';
+import { useCartCtx } from '../../contexts/CartContext';
 
 export default function ProductCard({ product }: { product: IProduct }) {
+  const { handleAddToCart } = useCartCtx();
+
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
       <div className="h-[300px]">
@@ -46,7 +49,10 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
         <div className="mt-auto flex items-center justify-between">
           <span className="text-xl font-bold">{product.price} EGP</span>
-          <button className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base">
+          <button
+            onClick={() => handleAddToCart(product.id)}
+            className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base"
+          >
             Add to cart
           </button>
         </div>

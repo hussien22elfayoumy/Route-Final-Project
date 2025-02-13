@@ -19,6 +19,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import ProductsDetails from './pages/ProductsDetails';
 import CategoryDetails from './pages/CategoryDetails';
 import BrandDetails from './pages/BrandDetails';
+import CartContextProvicer from './contexts/CartContext';
 
 const router = createBrowserRouter([
   {
@@ -125,10 +126,12 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <UserContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
+      <CartContextProvicer>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </CartContextProvicer>
     </UserContextProvider>
   );
 }

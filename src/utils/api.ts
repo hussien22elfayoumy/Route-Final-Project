@@ -87,3 +87,56 @@ export async function fetchBrandDetails(id: string | undefined): Promise<IBrand>
 
   return data.data;
 }
+
+export interface CartProduct {
+  count: number;
+  _id: string;
+  product: string;
+  price: number;
+}
+
+export interface CartData {
+  _id: string;
+  cartOwner: string;
+  products: CartProduct[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+  totalCartPrice: number;
+}
+
+export interface AddToCartResponse {
+  status: string;
+  message: string;
+  numOfCartItems: number;
+  cartId: string;
+  data: CartData;
+}
+
+// TODO: Cart
+
+export async function addProductToCart(productId: string): Promise<AddToCartResponse> {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/cart`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      token: userToken,
+    },
+    body: JSON.stringify({
+      productId,
+    }),
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to add product to cart.');
+  }
+
+  return data;
+}
