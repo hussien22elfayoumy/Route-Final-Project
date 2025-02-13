@@ -22,6 +22,7 @@ export interface IProduct {
   category: ICategory;
   ratingsAverage: number;
   id: string;
+  brand: IBrand;
 }
 
 // TODO: get all products
@@ -68,7 +69,6 @@ export async function fetchCategoryDetails(id: string | undefined): Promise<ICat
 }
 
 // TODO: get all brnads
-
 export async function fetchAllBrands(): Promise<IBrand[]> {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/brands`);
   const data = await res.json();
@@ -79,7 +79,6 @@ export async function fetchAllBrands(): Promise<IBrand[]> {
 }
 
 //TODO: get specific brand
-
 export async function fetchBrandDetails(id: string | undefined): Promise<IBrand> {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/brands/${id}`);
   const data = await res.json();

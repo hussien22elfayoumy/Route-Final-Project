@@ -1,22 +1,23 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+
 import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
-import CategoryDetailsCard from '../features/categories/CategoryDetailsCard';
-import { fetchAllProducts, fetchCategoryDetails, ICategory, IProduct } from '../utils/api';
-export default function CategoryDetails() {
-  const { categoryId, category } = useParams();
-  const [categoryDetails, setCategoryDetails] = useState<ICategory>();
+import BrandDetailsCard from '../features/brands/BrandDetailsCard';
+import { fetchAllProducts, fetchBrandDetails, IBrand, IProduct } from '../utils/api';
+export default function BrandDetails() {
+  const { brandsId, brand } = useParams();
+  const [brandDetials, setBrandDetails] = useState<IBrand>();
   const [relatedProducts, setRelatedProducts] = useState<IProduct[] | undefined>();
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  async function getCategoryDetails() {
+  async function getBrandsDetails() {
     try {
       setIsLoading(true);
-      const fetchData = await fetchCategoryDetails(categoryId);
+      const fetchData = await fetchBrandDetails(brandsId);
 
-      setCategoryDetails(fetchData);
+      setBrandDetails(fetchData);
     } catch (err) {
       console.log(err);
       setError((err as Error).message);
@@ -30,7 +31,7 @@ export default function CategoryDetails() {
       setIsLoading(true);
       const fetchData = await fetchAllProducts();
 
-      setRelatedProducts(fetchData.filter((product) => product.category.name === category));
+      setRelatedProducts(fetchData.filter((product) => product.brand.name === brand));
     } catch (err) {
       console.log(err);
       setError((err as Error).message);
@@ -42,7 +43,7 @@ export default function CategoryDetails() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    getCategoryDetails();
+    getBrandsDetails();
     getRelatedProducts();
   }, []);
 
@@ -57,7 +58,7 @@ export default function CategoryDetails() {
   return (
     <>
       <section className="py-20">
-        <CategoryDetailsCard categoryDetails={categoryDetails} />
+        <BrandDetailsCard brand={brandDetials} />
       </section>
 
       <section className="mt-10 border-t border-border-dark py-10">
