@@ -1,4 +1,5 @@
 import HeroSlider from '../components/HeroSlider';
+import AllProducts from '../features/products/AllProducts';
 import ProductCard from '../features/products/ProductCard';
 
 export default function Home() {
@@ -7,12 +8,9 @@ export default function Home() {
       <section className="mb-10 rounded-lg pt-2">
         <HeroSlider />
       </section>
-      <section>Slider 2</section>
-      <section className="grid content-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+      <section className="py-5">Slider 2</section>
+      <section className="py-5">
+        <AllProducts />
       </section>
     </>
   );

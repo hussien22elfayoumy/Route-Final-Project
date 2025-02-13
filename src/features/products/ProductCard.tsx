@@ -1,27 +1,29 @@
 import { Link } from 'react-router-dom';
-import test from '../../assets/slider-image-1.jpeg';
+import { IProduct } from './AllProducts';
 
-export default function ProductCard() {
+export default function ProductCard({ product }: { product: IProduct }) {
   return (
-    <div className="f mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
-      <Link to="#">
-        <img
-          className="h-[250px] w-full rounded-t-lg object-cover"
-          src={test}
-          alt="product image"
-        />
-      </Link>
-      <div className="mt-3 flex flex-col gap-3 px-5 pb-5">
+    <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
+      <div className="h-[300px]">
+        <Link to="#">
+          <img
+            className="h-[300px] w-full rounded-t-lg object-cover"
+            src={product.imageCover}
+            alt={product.title}
+          />
+        </Link>
+      </div>
+      <div className="mt-3 flex h-[calc(100%-310px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
           <Link
             to="#"
             className="font-semibold tracking-tight text-color-base"
           >
-            Brand
+            {product.category.name}
           </Link>
 
           <div className="flex items-center">
-            <div className="flex items-center space-x-1 rtl:space-x-reverse">
+            <div className="l flex items-center justify-between space-x-1 rtl:space-x-reverse">
               <svg
                 className="size-5 text-yellow-300"
                 aria-hidden="true"
@@ -33,17 +35,22 @@ export default function ProductCard() {
               </svg>
             </div>
             <span className="ms-2 rounded-sm bg-color-base/20 px-2 py-0.5 text-xs font-semibold">
-              5.0
+              {product.ratingsAverage}
             </span>
           </div>
         </div>
 
         <h5 className="mb-5 text-lg font-semibold tracking-tight text-text-dark">
-          <Link to="#">Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport</Link>
+          <Link
+            to="#"
+            className="truncate"
+          >
+            {product.title.slice(0, 30)} ...
+          </Link>
         </h5>
 
-        <div className="flex items-center justify-between">
-          <span className="text-xl font-bold">599 EGP</span>
+        <div className="mt-auto flex items-center justify-between">
+          <span className="text-xl font-bold">{product.price} EGP</span>
           <button className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base">
             Add to cart
           </button>
