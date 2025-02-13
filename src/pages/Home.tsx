@@ -1,4 +1,4 @@
-import CategoriesSlider from '../components/CatigoriesSlider';
+import CategoriesSlider from '../components/CategoriesSlider';
 import HeroSlider from '../components/HeroSlider';
 import AllProducts from '../features/products/AllProducts';
 

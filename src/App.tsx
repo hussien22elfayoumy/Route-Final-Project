@@ -16,6 +16,7 @@ import ProtectdRoute from './components/ProtectdRoute';
 import AllOrders from './pages/AllOrders';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import ProductsDetails from './pages/ProductsDetails';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Products />,
+      },
+      {
+        path: 'products/:productId',
+        element: <ProductsDetails />,
       },
       {
         path: 'cart',

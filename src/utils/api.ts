@@ -25,6 +25,17 @@ export async function fetchAllProducts(): Promise<IProduct[]> {
   return data.data;
 }
 
+//TODO: get specific Product
+
+export async function fetchProductDetails(id: string | undefined): Promise<IProduct> {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/products/${id}`);
+  const data = await res.json();
+
+  if (!res.ok) throw new Error('Error getting Product Details');
+
+  return data.data;
+}
+
 // TODO: get all categories
 
 export async function fetchAllCategories(): Promise<ICategory[]> {

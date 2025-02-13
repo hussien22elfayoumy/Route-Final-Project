@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import { IProduct } from './AllProducts';
+import { IProduct } from '../../utils/api';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
       <div className="h-[300px]">
-        <Link to="#">
+        <Link to={`/products/${product.id}`}>
           <img
             className="h-[300px] w-full rounded-t-lg object-cover"
             src={product.imageCover}
@@ -42,7 +42,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
         <h5 className="mb-5 text-lg font-semibold tracking-tight text-text-dark">
           <Link
-            to="#"
+            to={`/products/${product.id}`}
             className="truncate"
           >
             {product.title.slice(0, 30)} ...
