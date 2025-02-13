@@ -19,48 +19,48 @@ export default function HeroSlider() {
   };
   return (
     <div className="flex">
-      <div className="w-3/4">
+      <div className="w-full md:w-3/4">
         {/* @ts-expect-error Server Component */}
         <Slider {...settings}>
           <div aria-hidden="false">
             <img
               src={Slider1}
-              className="h-[300px] w-full rounded-l-lg object-cover"
+              className="h-[400px] w-full rounded-l-lg object-cover"
               alt="slider"
             />
           </div>
           <div aria-hidden="false">
             <img
               src={Slider2}
-              className="h-[300px] w-full rounded-l-lg object-cover"
+              className="h-[400px] w-full rounded-l-lg object-cover"
               alt="slider"
             />
           </div>
           <div aria-hidden="false">
             <img
               src={Slider3}
-              className="h-[300px] w-full rounded-l-lg object-cover"
+              className="h-[400px] w-full rounded-l-lg object-cover"
               alt="slider"
             />
           </div>
           <div aria-hidden="false">
             <img
               src={Slider4}
-              className="h-[300px] w-full rounded-l-lg object-cover"
+              className="h-[400px] w-full rounded-l-lg object-cover"
               alt="slider"
             />
           </div>
         </Slider>
       </div>
-      <div className="flex w-1/4 flex-col">
+      <div className="hidden flex-col md:flex md:w-1/4">
         <img
           src={Slider2}
-          className="h-[150px] w-full rounded-tr-lg object-cover"
+          className="h-[200px] w-full rounded-tr-lg object-cover"
           alt="slider"
         />
         <img
           src={Slider3}
-          className="h-[150px] w-full rounded-br-lg object-cover"
+          className="h-[200px] w-full rounded-br-lg object-cover"
           alt="slider"
         />
       </div>

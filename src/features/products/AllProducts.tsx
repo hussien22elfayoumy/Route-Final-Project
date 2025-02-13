@@ -32,7 +32,7 @@ export default function AllProducts() {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
-  const allProducts: IProduct[] = data.data;
+  const allProducts: IProduct[] = data?.data;
 
   return (
     <div className="grid content-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
