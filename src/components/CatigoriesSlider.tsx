@@ -1,32 +1,18 @@
 import Slider from 'react-slick';
 import { Settings } from 'react-slick';
 
-import { fetchAllCategories } from '../utils/categories';
-import { useQuery } from '@tanstack/react-query';
-
-interface ICategoires {
-  image: string;
-  name: string;
-}
+import { useCategories } from '../hooks/useCategories';
 
 export default function CategoriesSlider() {
-  const { data, error, isLoading, isError } = useQuery({
-    queryKey: ['categories'],
-    queryFn: fetchAllCategories,
-    staleTime: 1000 * 60 * 5,
-  });
+  const { data, error, isLoading, isError } = useCategories();
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   if (isError) {
-    return <div>Error: {error.message}</div>;
+    return <div>Error: {error?.message}</div>;
   }
-
-  const allCatigories: ICategoires[] = data?.data;
-
-  console.log(allCatigories);
 
   const settings: Settings = {
     dots: true,
@@ -71,7 +57,7 @@ export default function CategoriesSlider() {
     <div className="">
       {/* @ts-expect-error Server Component */}
       <Slider {...settings}>
-        {allCatigories.map((cat) => (
+        {data?.map((cat) => (
           <div
             key={cat.name}
             aria-hidden="false"
