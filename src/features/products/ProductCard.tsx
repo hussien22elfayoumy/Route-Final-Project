@@ -15,12 +15,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
       </div>
       <div className="mt-3 flex h-[calc(100%-310px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
-          <Link
-            to="#"
-            className="font-semibold tracking-tight text-color-base"
-          >
-            {product.category.name}
-          </Link>
+          <p className="font-semibold tracking-tight text-color-base">{product.category.name}</p>
 
           <div className="flex items-center">
             <div className="l flex items-center justify-between space-x-1 rtl:space-x-reverse">
