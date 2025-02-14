@@ -144,3 +144,39 @@ export function handleLogout(handleUser: (user: UserType | null) => void) {
   localStorage.removeItem('loggedInUser');
   handleUser(null);
 }
+
+// TODO: Verify token to get user Id
+
+interface VerifyTokenResponse {
+  message: string;
+  decoded: {
+    id: string;
+    name: string;
+    role: string;
+    iat: number;
+    exp: number;
+  };
+}
+
+export async function verifyToken(): Promise<VerifyTokenResponse> {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/auth/verifyToken`, {
+    method: 'GET',
+    headers: {
+      token: userToken,
+    },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to get user cart.');
+  }
+
+  return data;
+}
