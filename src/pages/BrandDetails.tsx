@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
 import BrandDetailsCard from '../features/brands/BrandDetailsCard';
 import { fetchAllProducts, fetchBrandDetails } from '../utils/public-api';
@@ -21,7 +20,6 @@ export default function BrandDetails() {
 
       setBrandDetails(fetchData);
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);
@@ -35,7 +33,6 @@ export default function BrandDetails() {
 
       setRelatedProducts(fetchData.filter((product) => product.brand.name === brand));
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);

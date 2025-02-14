@@ -2,7 +2,6 @@ import ProductDetailsCard from '../features/products/ProductDetailsCard';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { fetchAllProducts, fetchProductDetails } from '../utils/public-api';
-import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
 import { IProduct } from '../types/interfaces';
 import RelatedProducts from '../components/RelatedProducts';
@@ -20,7 +19,6 @@ export default function ProductsDetails() {
 
       setProductDetails(fetchData);
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);
@@ -34,7 +32,6 @@ export default function ProductsDetails() {
 
       setRelatedProducts(fetchData.filter((product) => product.category.name === category));
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);

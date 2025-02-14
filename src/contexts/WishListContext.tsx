@@ -6,6 +6,7 @@ import {
 } from '../utils/wishlist-api';
 import toast from 'react-hot-toast';
 import { UserWishListResponse } from '../types/interfaces';
+import { useUserCtx } from './UserContext';
 
 interface WishListCxtType {
   isLoading: boolean;
@@ -28,15 +29,15 @@ export default function WishListContextProvider({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [userWishList, setUserWishList] = useState<UserWishListResponse | null>(null);
+  const { user } = useUserCtx();
 
   async function getUserWishList() {
     try {
+      if (!user) return;
       setIsLoading(true);
       const res = await fetchUserWishList();
-      console.log(res);
       setUserWishList(res);
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);

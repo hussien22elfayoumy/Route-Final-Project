@@ -8,6 +8,7 @@ import {
   fetchUserCart,
   updateCartItemQty,
 } from '../utils/cart-api';
+import { useUserCtx } from './UserContext';
 
 interface ICartContext {
   handleAddToCart: (productId: string) => void;
@@ -36,6 +37,7 @@ const cartContext = createContext<ICartContext>({
 export default function CartContextProvicer({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [isClearingCart, setIsClearingCart] = useState(false);
+  const { user } = useUserCtx();
 
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -43,11 +45,11 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
 
   async function getUserCart() {
     try {
+      if (!user) return;
       setIsLoading(true);
       const res = await fetchUserCart();
       setUserCart(res);
     } catch (err) {
-      console.log(err);
       setError((err as Error).message);
     } finally {
       setIsLoading(false);
@@ -75,7 +77,6 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
       toast.success(res.message);
       setUserCart(null);
     } catch (err) {
-      console.log(err);
       toast.error((err as Error).message);
     } finally {
       setIsClearingCart(false);
@@ -102,7 +103,6 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
       // setIsDeletingCartItem(true);
       const res = await updateCartItemQty(productId, count);
       toast.success(res.message || 'Product Updated successfully');
-      console.log(res);
       setUserCart(res);
     } catch (err) {
       toast.error((err as Error).message);

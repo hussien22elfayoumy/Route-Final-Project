@@ -4,10 +4,14 @@ import { NavLink } from 'react-router-dom';
 import { useUserCtx } from '../contexts/UserContext';
 import { handleLogout } from '../utils/auth-api';
 import UserImg from '../assets/userImg.png';
+import { useCartCtx } from '../contexts/CartContext';
+import { useWishListContext } from '../contexts/WishListContext';
 
 export default function UserMenu() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const { user, handleUser } = useUserCtx();
+  const { userCart } = useCartCtx();
+  const { userWishList } = useWishListContext();
 
   return (
     <div className="relative">
@@ -48,21 +52,31 @@ export default function UserMenu() {
               All Orders
             </NavLink>
           </li>
-          <li>
+          <li className="relative">
             <NavLink
               to="/wishlist"
               className="block rounded-sm px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
             >
               WishList
             </NavLink>
+            {userWishList?.count! > 0 && (
+              <div className="full absolute left-[64px] top-[0px] flex size-4 items-center justify-center rounded-full bg-yellow-300/80 text-xs font-semibold">
+                {userWishList?.count}
+              </div>
+            )}
           </li>
-          <li>
+          <li className="relative">
             <NavLink
               to="/cart"
-              className="block rounded-sm px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
+              className="block rounded-sm px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
             >
               Cart
             </NavLink>
+            {userCart?.numOfCartItems! > 0 && (
+              <div className="full absolute left-[38px] top-[0px] flex size-4 items-center justify-center rounded-full bg-color-base/80 text-xs text-white">
+                {userCart?.numOfCartItems}
+              </div>
+            )}
           </li>
           <li className="mt-2 px-2 text-center">
             <button

@@ -3,10 +3,13 @@ import AppLogo from '../assets/app-logo.svg';
 import { useState } from 'react';
 import UserMenu from './UserMenu';
 import { useUserCtx } from '../contexts/UserContext';
+import { useCartCtx } from '../contexts/CartContext';
+import { useWishListContext } from '../contexts/WishListContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { user } = useUserCtx();
+  const { userCart } = useCartCtx();
   return (
     <nav className="fixed start-0 top-0 z-20 w-full border-b border-border-light bg-card-bg px-4 py-4 shadow-sm md:px-12">
       <div className="container mx-auto">
@@ -101,13 +104,18 @@ export default function Navbar() {
                 </NavLink>
               </li>
               {user && (
-                <li>
+                <li className="relative">
                   <NavLink
                     to="/cart"
                     className="block rounded-sm px-3 py-2 hover:bg-gray-100 hover:text-emerald-600 md:p-0 md:hover:bg-transparent md:hover:text-emerald-600"
                   >
                     Cart
                   </NavLink>
+                  {userCart?.numOfCartItems! > 0 && (
+                    <div className="full absolute left-[42px] top-[6px] flex size-4 items-center justify-center rounded-full bg-color-base/80 text-xs font-semibold text-white md:left-[30px] md:top-[-5px]">
+                      {userCart?.numOfCartItems}
+                    </div>
+                  )}
                 </li>
               )}
             </ul>

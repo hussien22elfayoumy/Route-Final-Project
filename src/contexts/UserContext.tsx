@@ -35,7 +35,7 @@ export default function UserContextProvider({ children }: Readonly<{ children: R
       const res = await verifyToken();
       setUserId(res.decoded.id);
     } catch (err) {
-      toast.error((err as Error).message);
+      // toast.error((err as Error).message);
       setUser(null);
       localStorage.removeItem('loggedInUser');
     }
