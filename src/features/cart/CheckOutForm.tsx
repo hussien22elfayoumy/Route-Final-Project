@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CheckOutFormSchema, CheckOutFormType } from '../../types/schemas/checkout-form-schema';
 import { onCheckoutFormSubmit } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
@@ -14,7 +14,6 @@ export default function CheckoutForm() {
     resolver: zodResolver(CheckOutFormSchema),
   });
   const { userCart } = useCartCtx();
-  const navigate = useNavigate();
 
   return (
     <div className="mx-auto h-full max-w-[600px] rounded-lg bg-card-bg p-8 px-10 shadow">
