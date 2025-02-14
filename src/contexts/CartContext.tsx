@@ -4,6 +4,7 @@ import {
   deleteCartItem,
   deleteUserCart,
   fetchUserCart,
+  updateCartItemQty,
   UserCartResponse,
 } from '../utils/api';
 import toast from 'react-hot-toast';
@@ -11,6 +12,7 @@ import toast from 'react-hot-toast';
 interface ICartContext {
   handleAddToCart: (productId: string) => void;
   handleDeleteCartItem: (productId: string) => void;
+  handleUpdateCartItem: (productId: string, count: number) => void;
   isAddingToCart: boolean;
   userCart: UserCartResponse | null;
   isLoading: boolean;
@@ -24,6 +26,7 @@ const cartContext = createContext<ICartContext>({
   handleAddToCart: () => {},
   handleDeleteUserCart: () => {},
   handleDeleteCartItem: () => {},
+  handleUpdateCartItem: () => {},
   isAddingToCart: false,
   userCart: null,
   isLoading: false,
@@ -95,6 +98,23 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     }
   }
 
+  async function handleUpdateCartItem(productId: string, count: number) {
+    if (count === 0) {
+      return;
+    }
+    try {
+      // setIsDeletingCartItem(true);
+      const res = await updateCartItemQty(productId, count);
+      toast.success(res.message || 'Product Updated successfully');
+      console.log(res);
+      setUserCart(res);
+    } catch (err) {
+      toast.error((err as Error).message);
+    } finally {
+      // setIsDeletingCartItem(false);
+    }
+  }
+
   useEffect(() => {
     getUserCart();
   }, []);
@@ -109,6 +129,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     isClearingCart,
     handleDeleteCartItem,
     isDeletingCartItem,
+    handleUpdateCartItem,
   };
 
   return <cartContext.Provider value={ctxValue}>{children}</cartContext.Provider>;

@@ -21,16 +21,16 @@ export default function ProductCard({ product }: { product: IProduct }) {
 
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
-      <div className="h-[300px]">
+      <div className="h-[350px]">
         <Link to={`/products/${product.id}/${product.category.name}`}>
           <img
-            className="h-[300px] w-full rounded-t-lg object-cover"
+            className="h-[350px] w-full rounded-t-lg object-cover"
             src={product.imageCover}
             alt={product.title}
           />
         </Link>
       </div>
-      <div className="mt-3 flex h-[calc(100%-310px)] flex-col gap-3 px-5 pb-5">
+      <div className="mt-3 flex h-[calc(100%-360px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
           <p className="font-semibold tracking-tight text-color-base">{product.category.name}</p>
 

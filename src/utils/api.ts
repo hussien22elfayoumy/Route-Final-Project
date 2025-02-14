@@ -229,3 +229,29 @@ export async function deleteCartItem(productId: string) {
 
   return data;
 }
+
+export async function updateCartItemQty(productId: string, count: number) {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/cart/${productId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      token: userToken,
+    },
+    body: JSON.stringify({ count }),
+  });
+  const data = await res.json();
+  console.log('res', res);
+  console.log('data', data);
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to update your cart item.');
+  }
+
+  return data;
+}
