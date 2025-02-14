@@ -36,7 +36,7 @@ export async function addProductToWishList(productId: string) {
   }
 
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/wishlist`, {
-    method: 'PUT',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       token: userToken,
@@ -44,8 +44,6 @@ export async function addProductToWishList(productId: string) {
     body: JSON.stringify({ productId }),
   });
   const data = await res.json();
-  console.log('res', res);
-  console.log('data', data);
 
   if (!res.ok) {
     throw new Error(data.message || 'Failed to update your cart item.');

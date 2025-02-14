@@ -5,7 +5,6 @@ import ProductCard from '../products/ProductCard';
 
 export default function UserWishList() {
   const { isLoading, error: wishLishError, userWishList } = useWishListContext();
-  console.log(userWishList?.count);
 
   if (isLoading) {
     return <Loader />;

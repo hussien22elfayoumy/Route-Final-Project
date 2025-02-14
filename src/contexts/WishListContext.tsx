@@ -1,15 +1,25 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { fetchUserWishList, UserWishListResponse } from '../utils/wishlist';
+import {
+  addProductToWishList,
+  fetchUserWishList,
+  removeProductFormWishList,
+  UserWishListResponse,
+} from '../utils/wishlist';
+import toast from 'react-hot-toast';
 
 interface WishListCxtType {
   isLoading: boolean;
   error: string;
   userWishList: UserWishListResponse | null;
+  handleAddProductToWishList: (productId: string) => void;
+  handleDeleteProductFromWishList: (productId: string) => void;
 }
 const WishListContext = createContext<WishListCxtType>({
   isLoading: false,
   error: '',
   userWishList: null,
+  handleAddProductToWishList: () => {},
+  handleDeleteProductFromWishList: () => {},
 });
 
 export default function WishListContextProvider({
@@ -33,6 +43,27 @@ export default function WishListContextProvider({
     }
   }
 
+  async function handleAddProductToWishList(productId: string) {
+    try {
+      const res = await addProductToWishList(productId);
+      toast.success(res.message || 'Product removed successfully');
+    } catch (err) {
+      toast.error((err as Error).message);
+    } finally {
+    }
+  }
+
+  async function handleDeleteProductFromWishList(productId: string) {
+    try {
+      const res = await removeProductFormWishList(productId);
+
+      toast.success(res.message || 'Product removed successfully');
+    } catch (err) {
+      toast.error((err as Error).message);
+    } finally {
+    }
+  }
+
   useEffect(() => {
     getUserWishList();
   }, []);
@@ -41,6 +72,8 @@ export default function WishListContextProvider({
     isLoading,
     error,
     userWishList,
+    handleAddProductToWishList,
+    handleDeleteProductFromWishList,
   };
 
   return <WishListContext.Provider value={ctxValue}>{children}</WishListContext.Provider>;

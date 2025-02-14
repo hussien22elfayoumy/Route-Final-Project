@@ -3,9 +3,11 @@ import { IProduct } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
 import { useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa6';
+import { useWishListContext } from '../../contexts/WishListContext';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();
+  const { handleAddProductToWishList, handleDeleteProductFromWishList } = useWishListContext();
 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
 
@@ -32,13 +34,21 @@ export default function ProductCard({ product }: { product: IProduct }) {
             alt={product.title}
           />
         </Link>
-        <button className="star absolute right-4 top-4">
-          {wishList ? (
+        {wishList ? (
+          <button
+            onClick={() => handleDeleteProductFromWishList(product.id)}
+            className="star absolute right-4 top-4"
+          >
             <FaStar className="size-8 text-yellow-300" />
-          ) : (
+          </button>
+        ) : (
+          <button
+            onClick={() => handleAddProductToWishList(product.id)}
+            className="star absolute right-4 top-4"
+          >
             <FaRegStar className="size-8" />
-          )}
-        </button>
+          </button>
+        )}
       </div>
       <div className="mt-3 flex h-[calc(100%-360px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
