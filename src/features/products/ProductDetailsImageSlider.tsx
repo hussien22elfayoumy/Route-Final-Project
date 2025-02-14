@@ -1,6 +1,5 @@
 import Slider from 'react-slick';
 import { Settings } from 'react-slick';
-import Test from '../../assets/slider-2.jpeg';
 
 export default function ProductDetailsImageSlider({ imgs }: { imgs: string[] | undefined }) {
   const settings: Settings = {

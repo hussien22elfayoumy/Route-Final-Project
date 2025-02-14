@@ -4,7 +4,6 @@ import { useState } from 'react';
 import UserMenu from './UserMenu';
 import { useUserCtx } from '../contexts/UserContext';
 import { useCartCtx } from '../contexts/CartContext';
-import { useWishListContext } from '../contexts/WishListContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
