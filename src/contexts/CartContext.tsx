@@ -17,6 +17,7 @@ interface ICartContext {
   error: string;
   handleDeleteUserCart: () => void;
   isClearingCart: boolean;
+  isDeletingCartItem: boolean;
 }
 
 const cartContext = createContext<ICartContext>({
@@ -28,11 +29,14 @@ const cartContext = createContext<ICartContext>({
   isLoading: false,
   error: '',
   isClearingCart: false,
+  isDeletingCartItem: false,
 });
 
 export default function CartContextProvicer({ children }: Readonly<{ children: React.ReactNode }>) {
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [isClearingCart, setIsClearingCart] = useState(false);
+  const [isDeletingCartItem, setIsDeletingCartItem] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [userCart, setUserCart] = useState<UserCartResponse | null>(null);
@@ -69,7 +73,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
 
       const res = await deleteUserCart();
       toast.success(res.message);
-      getUserCart();
+      setUserCart(null);
     } catch (err) {
       console.log(err);
       toast.error((err as Error).message);
@@ -80,11 +84,14 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
 
   async function handleDeleteCartItem(productId: string) {
     try {
+      setIsDeletingCartItem(true);
       const res = await deleteCartItem(productId);
       toast.success(res.message || 'Product removed successfully');
       setUserCart(res);
     } catch (err) {
       toast.error((err as Error).message);
+    } finally {
+      setIsDeletingCartItem(false);
     }
   }
 
@@ -101,6 +108,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     handleDeleteUserCart,
     isClearingCart,
     handleDeleteCartItem,
+    isDeletingCartItem,
   };
 
   return <cartContext.Provider value={ctxValue}>{children}</cartContext.Provider>;
