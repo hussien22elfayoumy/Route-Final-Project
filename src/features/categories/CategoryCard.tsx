@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ICategory } from '../../utils/api';
+import { ICategory } from '../../types/interfaces';
 
 export default function CategoryCard({ category }: { category: ICategory }) {
   return (

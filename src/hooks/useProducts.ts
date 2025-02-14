@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { fetchAllProducts } from '../utils/api';
+import { fetchAllProducts } from '../utils/public-api';
 
 export function useProducts() {
   const { data, error, isLoading, isError } = useQuery({

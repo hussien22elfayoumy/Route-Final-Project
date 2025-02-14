@@ -1,9 +1,10 @@
 import ProductDetailsCard from '../features/products/ProductDetailsCard';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { fetchAllProducts, fetchProductDetails, IProduct } from '../utils/api';
+import { fetchAllProducts, fetchProductDetails } from '../utils/public-api';
 import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
+import { IProduct } from '../types/interfaces';
 export default function ProductsDetails() {
   const { productId, category } = useParams();
   const [productDetails, setProductDetails] = useState<IProduct>();

@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { UserCartResponse } from '../types/interfaces';
 import {
   addProductToCart,
   deleteCartItem,
   deleteUserCart,
   fetchUserCart,
   updateCartItemQty,
-  UserCartResponse,
-} from '../utils/api';
-import toast from 'react-hot-toast';
+} from '../utils/cart-api';
 
 interface ICartContext {
   handleAddToCart: (productId: string) => void;

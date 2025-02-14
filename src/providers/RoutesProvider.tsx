@@ -1,19 +1,26 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MainLayout from '../Layouts/MainLayout';
 import Home from '../pages/Home';
+import ProtectdRoute from '../components/ProtectdRoute';
 import Login from '../pages/auth/Login';
 import SignUp from '../pages/auth/SignUp';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword';
+import VerifyResetCode from '../pages/auth/VerifyResetCode';
 import Products from '../pages/Products';
+import ProductsDetails from '../pages/ProductsDetails';
 import Cart from '../pages/Cart';
 import Brands from '../pages/Brands';
+import BrandDetails from '../pages/BrandDetails';
 import Categories from '../pages/Categories';
+import CategoryDetails from '../pages/CategoryDetails';
 import WishList from '../pages/WishList';
+import AllOrders from '../pages/AllOrders';
+import Checkout from '../pages/Checkout';
 
 const router = createBrowserRouter([
   {
-    path: '',
+    path: '/',
     element: <MainLayout />,
     children: [
       {
@@ -22,39 +29,99 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <Login />,
+        element: (
+          <ProtectdRoute type="public">
+            <Login />
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'sign-up',
-        element: <SignUp />,
+        element: (
+          <ProtectdRoute type="public">
+            <SignUp />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
-        path: 'forgot-Password',
-        element: <ForgotPassword />,
+        path: 'forgot-password',
+        element: (
+          <ProtectdRoute type="public">
+            <ForgotPassword />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
-        path: 'reset-Password',
-        element: <ResetPassword />,
+        path: 'reset-password',
+        element: (
+          <ProtectdRoute type="public">
+            <ResetPassword />{' '}
+          </ProtectdRoute>
+        ),
+      },
+      {
+        path: 'verify-code',
+        element: (
+          <ProtectdRoute type="public">
+            <VerifyResetCode />{' '}
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'products',
         element: <Products />,
       },
       {
+        path: 'products/:productId/:category',
+        element: <ProductsDetails />,
+      },
+      {
         path: 'cart',
-        element: <Cart />,
+        element: (
+          <ProtectdRoute type="protected">
+            <Cart />
+          </ProtectdRoute>
+        ),
       },
       {
         path: 'brands',
         element: <Brands />,
       },
       {
+        path: 'brands/:brandsId/:brand',
+        element: <BrandDetails />,
+      },
+      {
         path: 'categories',
         element: <Categories />,
       },
       {
+        path: 'categories/:categoryId/:category',
+        element: <CategoryDetails />,
+      },
+      {
         path: 'wishList',
-        element: <WishList />,
+        element: (
+          <ProtectdRoute type="protected">
+            <WishList />
+          </ProtectdRoute>
+        ),
+      },
+      {
+        path: 'allorders',
+        element: (
+          <ProtectdRoute type="protected">
+            <AllOrders />
+          </ProtectdRoute>
+        ),
+      },
+      {
+        path: 'checkout',
+        element: (
+          <ProtectdRoute type="protected">
+            <Checkout />
+          </ProtectdRoute>
+        ),
       },
     ],
   },

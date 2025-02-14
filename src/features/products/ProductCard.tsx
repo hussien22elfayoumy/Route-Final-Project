@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { IProduct } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
 import { useState } from 'react';
 import { FaRegStar, FaStar } from 'react-icons/fa6';
 import { useWishListContext } from '../../contexts/WishListContext';
+import { IProduct } from '../../types/interfaces';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();

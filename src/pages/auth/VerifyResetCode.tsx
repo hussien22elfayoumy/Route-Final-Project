@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { onVerifyCodeFormSubmit } from '../../utils/auth';
+import { onVerifyCodeFormSubmit } from '../../utils/auth-api';
 import { verifyResetCodeSchema, VerifyResetCodeType } from '../../types/schemas/auth-schema';
 
 export default function VerifyResetCode() {

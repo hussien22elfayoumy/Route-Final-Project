@@ -1,10 +1,4 @@
-import { IProduct } from './api';
-
-export interface UserWishListResponse {
-  status: string;
-  count: number;
-  data: IProduct[];
-}
+import { UserWishListResponse } from '../types/interfaces';
 
 export async function fetchUserWishList(): Promise<UserWishListResponse> {
   const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;

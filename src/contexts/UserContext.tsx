@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { verifyToken } from '../utils/auth';
+import { verifyToken } from '../utils/auth-api';
 import toast from 'react-hot-toast';
 
 export interface UserType {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IBrand } from '../../utils/api';
+import { IBrand } from '../../types/interfaces';
 
 export default function BrandCard({ brand }: { brand: IBrand }) {
   return (

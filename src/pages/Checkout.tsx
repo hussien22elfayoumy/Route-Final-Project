@@ -1,4 +1,4 @@
-import CheckoutForm from '../features/cart/CheckoutForm';
+import CheckoutForm from '../features/cart/CheckOutForm';
 
 export default function Checkout() {
   return (

@@ -1,4 +1,4 @@
-import { IBrand } from '../../utils/api';
+import { IBrand } from '../../types/interfaces';
 
 export default function BrandDetailsCard({ brand }: { brand: IBrand | undefined }) {
   return (

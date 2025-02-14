@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
 import CategoryDetailsCard from '../features/categories/CategoryDetailsCard';
-import { fetchAllProducts, fetchCategoryDetails, ICategory, IProduct } from '../utils/api';
+import { fetchAllProducts, fetchCategoryDetails } from '../utils/public-api';
+import { ICategory, IProduct } from '../types/interfaces';
 export default function CategoryDetails() {
   const { categoryId, category } = useParams();
   const [categoryDetails, setCategoryDetails] = useState<ICategory>();

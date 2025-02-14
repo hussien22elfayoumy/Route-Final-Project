@@ -2,8 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { CheckOutFormSchema, CheckOutFormType } from '../../types/schemas/checkout-form-schema';
-import { onCheckoutFormSubmit } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
+import { onCheckoutFormSubmit } from '../../utils/orders-api';
 
 export default function CheckoutForm() {
   const {

@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
 import BrandDetailsCard from '../features/brands/BrandDetailsCard';
-import { fetchAllProducts, fetchBrandDetails, IBrand, IProduct } from '../utils/api';
+import { fetchAllProducts, fetchBrandDetails } from '../utils/public-api';
+import { IBrand, IProduct } from '../types/interfaces';
 export default function BrandDetails() {
   const { brandsId, brand } = useParams();
   const [brandDetials, setBrandDetails] = useState<IBrand>();

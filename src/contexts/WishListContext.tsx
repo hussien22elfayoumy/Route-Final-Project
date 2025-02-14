@@ -3,9 +3,9 @@ import {
   addProductToWishList,
   fetchUserWishList,
   removeProductFormWishList,
-  UserWishListResponse,
-} from '../utils/wishlist';
+} from '../utils/wishlist-api';
 import toast from 'react-hot-toast';
+import { UserWishListResponse } from '../types/interfaces';
 
 interface WishListCxtType {
   isLoading: boolean;

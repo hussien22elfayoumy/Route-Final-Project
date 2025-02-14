@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { onLoginFormSubmit } from '../../utils/auth';
+import { onLoginFormSubmit } from '../../utils/auth-api';
 import { loginFormSchema, LoginFormType } from '../../types/schemas/auth-schema';
 import { useUserCtx } from '../../contexts/UserContext';
 

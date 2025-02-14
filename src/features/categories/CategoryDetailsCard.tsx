@@ -1,4 +1,4 @@
-import { ICategory } from '../../utils/api';
+import { ICategory } from '../../types/interfaces';
 
 export default function CategoryDetailsCard({
   categoryDetails,
