@@ -180,3 +180,25 @@ export async function fetchUserCart(): Promise<UserCartResponse> {
 
   return data;
 }
+
+export async function deleteUserCart() {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/cart`, {
+    method: 'DELETE',
+    headers: {
+      token: userToken,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to delete your cart.');
+  }
+
+  return data;
+}

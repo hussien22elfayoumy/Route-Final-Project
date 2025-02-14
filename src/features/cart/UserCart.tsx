@@ -3,7 +3,13 @@ import { useCartCtx } from '../../contexts/CartContext';
 import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 export default function UserCart() {
-  const { userCart, isLoading, error: cartError } = useCartCtx();
+  const {
+    userCart,
+    isLoading,
+    error: cartError,
+    isClearingCart,
+    handleDeleteUserCart,
+  } = useCartCtx();
 
   if (isLoading) {
     return <Loader />;
@@ -17,7 +23,7 @@ export default function UserCart() {
     <>
       {userCart?.numOfCartItems! > 0 ? (
         <div className="relative mx-auto max-w-[1000px] overflow-x-auto border border-border-light shadow-sm sm:rounded-lg">
-          <table className="w-full text-left text-sm">
+          <table className="w-full text-center text-sm">
             <thead className="border-b-border-dark bg-gray-100 text-xs font-bold uppercase">
               <tr>
                 <th
@@ -74,7 +80,7 @@ export default function UserCart() {
                     </Link>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-3 text-text-dark">
+                    <div className="flex items-center justify-center gap-3 text-text-dark">
                       <button
                         className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-gray-300 bg-white p-1 text-sm font-medium hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200"
                         type="button"
@@ -92,38 +98,33 @@ export default function UserCart() {
                   </td>
                   <td className="px-6 py-4 font-semibold">{product.price} EGP</td>
                   <td className="px-6 py-4">
-                    <a
-                      href="#"
-                      className="font-medium text-red-600 hover:underline"
-                    >
+                    <button className="rounded-lg bg-red-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-30">
                       Remove
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))}
               <tr className="border-b">
-                <td className="px-6 py-3 pe-0 text-end text-base font-bold">Total Cart:</td>
+                <td className="px-6 py-3 text-left text-lg font-semibold">
+                  Total Cart: {userCart?.data.totalCartPrice} EGP
+                </td>
+
                 <td
-                  colSpan={2}
-                  className="py-3 pe-6 ps-2 text-base font-bold"
+                  colSpan={3}
+                  className="p-1 text-left"
                 >
-                  {userCart?.data.totalCartPrice} EGP
+                  <button className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base disabled:cursor-not-allowed disabled:opacity-30">
+                    Checkout now
+                  </button>
                 </td>
-                <td className="px-6 py-3">
-                  <a
-                    href="#"
-                    className="text-base font-bold text-red-600 hover:underline"
+                <td className="p-1">
+                  <button
+                    disabled={isClearingCart}
+                    onClick={handleDeleteUserCart}
+                    className="rounded-lg bg-red-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-30"
                   >
-                    checkout
-                  </a>
-                </td>
-                <td className="px-6 py-3">
-                  <a
-                    href="#"
-                    className="text-base font-bold text-red-600 hover:underline"
-                  >
-                    Remove
-                  </a>
+                    Clear All Cart
+                  </button>
                 </td>
               </tr>
             </tbody>
