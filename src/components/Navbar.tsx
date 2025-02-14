@@ -100,14 +100,16 @@ export default function Navbar() {
                   Brands
                 </NavLink>
               </li>
-              <li>
-                <NavLink
-                  to="/cart"
-                  className="block rounded-sm px-3 py-2 hover:bg-gray-100 hover:text-emerald-600 md:p-0 md:hover:bg-transparent md:hover:text-emerald-600"
-                >
-                  Cart
-                </NavLink>
-              </li>
+              {user && (
+                <li>
+                  <NavLink
+                    to="/cart"
+                    className="block rounded-sm px-3 py-2 hover:bg-gray-100 hover:text-emerald-600 md:p-0 md:hover:bg-transparent md:hover:text-emerald-600"
+                  >
+                    Cart
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
         </div>
