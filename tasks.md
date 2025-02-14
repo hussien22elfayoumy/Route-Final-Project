@@ -88,17 +88,17 @@
 
 ### CART
 
-- [ ] Add Product To Cart `${BASE_URL}/cart`
+- [x] Add Product To Cart `${BASE_URL}/cart`
 - Body: broduct id
 
 - [ ] Update cart product quantity `${BASE_URL}/cart/:id`
 - Body: count
 
-- [ ] Get Logged user cart `${BASE_URL}/cart`
+- [x] Get Logged user cart `${BASE_URL}/cart`
 
-- [ ] Remove specific cart Item `${BASE_URL}/cart/:id`
+- [x] Remove specific cart Item `${BASE_URL}/cart/:id`
 
-- [ ] Clear user cart `${BASE_URL}/cart`
+- [x] Clear user cart `${BASE_URL}/cart`
 
 ### Orders
 
