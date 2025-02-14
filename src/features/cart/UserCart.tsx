@@ -2,6 +2,7 @@ import { FaMinus, FaPlus } from 'react-icons/fa6';
 import { useCartCtx } from '../../contexts/CartContext';
 import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 export default function UserCart() {
   const {
     userCart,
@@ -9,7 +10,9 @@ export default function UserCart() {
     error: cartError,
     isClearingCart,
     handleDeleteUserCart,
+    handleDeleteCartItem,
   } = useCartCtx();
+  const [isDeletingCartItem, setIsDeletingCartItem] = useState(false);
 
   if (isLoading) {
     return <Loader />;
@@ -18,6 +21,17 @@ export default function UserCart() {
   if (cartError) {
     return <p className="text-center text-lg font-bold text-red-600">{cartError}</p>;
   }
+
+  const handleClick = async (productId: string) => {
+    setIsDeletingCartItem(true);
+    try {
+      await handleDeleteCartItem(productId);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsDeletingCartItem(false);
+    }
+  };
 
   return (
     <>
@@ -98,7 +112,10 @@ export default function UserCart() {
                   </td>
                   <td className="px-6 py-4 font-semibold">{product.price} EGP</td>
                   <td className="px-6 py-4">
-                    <button className="rounded-lg bg-red-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-30">
+                    <button
+                      onClick={() => handleClick(product.product.id)}
+                      className="rounded-lg bg-red-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-30"
+                    >
                       Remove
                     </button>
                   </td>

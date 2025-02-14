@@ -1,9 +1,16 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { addProductToCart, deleteUserCart, fetchUserCart, UserCartResponse } from '../utils/api';
+import {
+  addProductToCart,
+  deleteCartItem,
+  deleteUserCart,
+  fetchUserCart,
+  UserCartResponse,
+} from '../utils/api';
 import toast from 'react-hot-toast';
 
 interface ICartContext {
   handleAddToCart: (productId: string) => void;
+  handleDeleteCartItem: (productId: string) => void;
   isAddingToCart: boolean;
   userCart: UserCartResponse | null;
   isLoading: boolean;
@@ -15,6 +22,7 @@ interface ICartContext {
 const cartContext = createContext<ICartContext>({
   handleAddToCart: () => {},
   handleDeleteUserCart: () => {},
+  handleDeleteCartItem: () => {},
   isAddingToCart: false,
   userCart: null,
   isLoading: false,
@@ -60,7 +68,6 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
       setIsClearingCart(true);
 
       const res = await deleteUserCart();
-      console.log(res);
       toast.success(res.message);
       getUserCart();
     } catch (err) {
@@ -68,6 +75,16 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
       toast.error((err as Error).message);
     } finally {
       setIsClearingCart(false);
+    }
+  }
+
+  async function handleDeleteCartItem(productId: string) {
+    try {
+      const res = await deleteCartItem(productId);
+      toast.success(res.message || 'Product removed successfully');
+      setUserCart(res);
+    } catch (err) {
+      toast.error((err as Error).message);
     }
   }
 
@@ -83,6 +100,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     error,
     handleDeleteUserCart,
     isClearingCart,
+    handleDeleteCartItem,
   };
 
   return <cartContext.Provider value={ctxValue}>{children}</cartContext.Provider>;

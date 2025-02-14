@@ -202,3 +202,30 @@ export async function deleteUserCart() {
 
   return data;
 }
+
+export interface DeleteCartItemResponse {
+  message: string;
+  statusMsg: string;
+}
+
+export async function deleteCartItem(productId: string) {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/cart/${productId}`, {
+    method: 'DELETE',
+    headers: {
+      token: userToken,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to delete your cart item.');
+  }
+
+  return data;
+}
