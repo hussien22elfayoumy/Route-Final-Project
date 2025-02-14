@@ -42,7 +42,7 @@ export default function UserMenu() {
         >
           <li>
             <NavLink
-              to="/all-orders"
+              to="/allorders"
               className="block rounded-sm px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
             >
               All Orders
