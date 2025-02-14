@@ -3,7 +3,6 @@ import MainLayout from '../Layouts/MainLayout';
 import Home from '../pages/Home';
 import ProtectdRoute from '../components/ProtectdRoute';
 import Login from '../pages/auth/Login';
-import SignUp from '../pages/auth/SignUp';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import ResetPassword from '../pages/auth/ResetPassword';
 import VerifyResetCode from '../pages/auth/VerifyResetCode';
@@ -18,6 +17,7 @@ import WishList from '../pages/WishList';
 import AllOrders from '../pages/AllOrders';
 import Checkout from '../pages/Checkout';
 import NotFound from '../components/NotFound';
+import SignUp from '../pages/auth/SignUp';
 
 const router = createBrowserRouter([
   {
