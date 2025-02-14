@@ -17,7 +17,7 @@ import WishList from '../pages/WishList';
 import AllOrders from '../pages/AllOrders';
 import Checkout from '../pages/Checkout';
 import NotFound from '../components/NotFound';
-import SignUp from '../pages/auth/SignUp';
+// import SignUp from '../pages/auth/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -36,14 +36,14 @@ const router = createBrowserRouter([
           </ProtectdRoute>
         ),
       },
-      {
-        path: 'sign-up',
-        element: (
-          <ProtectdRoute type="public">
-            <SignUp />{' '}
-          </ProtectdRoute>
-        ),
-      },
+      // {
+      //   path: 'sign-up',
+      //   element: (
+      //     <ProtectdRoute type="public">
+      //       <SignUp />{' '}
+      //     </ProtectdRoute>
+      //   ),
+      // },
       {
         path: 'forgot-password',
         element: (
