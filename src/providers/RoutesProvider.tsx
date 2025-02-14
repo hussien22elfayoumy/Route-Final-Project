@@ -17,7 +17,7 @@ import WishList from '../pages/WishList';
 import AllOrders from '../pages/AllOrders';
 import Checkout from '../pages/Checkout';
 import NotFound from '../components/NotFound';
-import Signup from '../pages/auth/SignUp';
+import Signup from '../pages/auth/Signup';
 
 const router = createBrowserRouter([
   {
