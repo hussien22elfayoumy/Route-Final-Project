@@ -113,7 +113,7 @@
 
 - [ ] getAllOrders `${BASE_URL}/orders`
 
-- [ ] Checkout session `${BASE_URL}/orders/checkout-session/66c91634ed0dc0016c217bb3?url=http://localhost:3000`
+- [x] Checkout session `${BASE_URL}/orders/checkout-session/66c91634ed0dc0016c217bb3?url=http://localhost:3000`
 - Form data: shippingAddress
 
   - details
