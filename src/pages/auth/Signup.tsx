@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { onSignUpFormSubmit } from '../../utils/auth-api';
 import { signUpFormSchema, SignUpFormType } from '../../types/schemas/auth-schema';
 
-export default function SignUp() {
+export default function Signup() {
   const {
     handleSubmit,
     register,

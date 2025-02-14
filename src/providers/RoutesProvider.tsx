@@ -17,7 +17,7 @@ import WishList from '../pages/WishList';
 import AllOrders from '../pages/AllOrders';
 import Checkout from '../pages/Checkout';
 import NotFound from '../components/NotFound';
-import SignUp from '../pages/auth/SignUp';
+import Signup from '../pages/auth/SignUp';
 
 const router = createBrowserRouter([
   {
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
         path: 'sign-up',
         element: (
           <ProtectdRoute type="public">
-            <SignUp />{' '}
+            <Signup />
           </ProtectdRoute>
         ),
       },
