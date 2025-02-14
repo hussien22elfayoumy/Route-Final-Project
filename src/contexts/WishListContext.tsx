@@ -47,6 +47,7 @@ export default function WishListContextProvider({
     try {
       const res = await addProductToWishList(productId);
       toast.success(res.message || 'Product removed successfully');
+      getUserWishList();
     } catch (err) {
       toast.error((err as Error).message);
     } finally {
@@ -58,6 +59,7 @@ export default function WishListContextProvider({
       const res = await removeProductFormWishList(productId);
 
       toast.success(res.message || 'Product removed successfully');
+      getUserWishList();
     } catch (err) {
       toast.error((err as Error).message);
     } finally {

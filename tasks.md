@@ -77,13 +77,13 @@
 
 ### WISHLIST
 
-- [ ] Add product to wishlist `${BASE_URL}/wishlist`
+- [x] Add product to wishlist `${BASE_URL}/wishlist`
 - Body: broduct id
 
-- [ ] Remove product from wishlist `${BASE_URL}/wishlist/:id`
+- [x] Remove product from wishlist `${BASE_URL}/wishlist/:id`
 - Body: broduct id
 
-- [ ] Get logged user wishlist `${BASE_URL}/wishlist/`
+- [x] Get logged user wishlist `${BASE_URL}/wishlist/`
 - Body: broduct id
 
 ### CART
@@ -101,13 +101,6 @@
 - [x] Clear user cart `${BASE_URL}/cart`
 
 ### Orders
-
-- [ ] Create Cash Order `${BASE_URL}/orders/:cartId`
-- Form data: shippingAddress
-
-  - details
-  - phone
-  - city
 
 - [ ] getUserOrders `${BASE_URL}/orders/user/:userId`
 

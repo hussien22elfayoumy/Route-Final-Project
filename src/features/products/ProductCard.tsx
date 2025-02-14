@@ -7,9 +7,12 @@ import { useWishListContext } from '../../contexts/WishListContext';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();
-  const { handleAddProductToWishList, handleDeleteProductFromWishList } = useWishListContext();
+  const { handleAddProductToWishList, handleDeleteProductFromWishList, userWishList } =
+    useWishListContext();
 
   const [isAddingToCart, setIsAddingToCart] = useState(false);
+
+  const inWishList = userWishList?.data.some((item) => item.id === product.id);
 
   const handleClick = async () => {
     setIsAddingToCart(true);
@@ -22,8 +25,6 @@ export default function ProductCard({ product }: { product: IProduct }) {
     }
   };
 
-  const wishList = false;
-
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
       <div className="relative h-[350px]">
@@ -34,7 +35,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
             alt={product.title}
           />
         </Link>
-        {wishList ? (
+        {inWishList ? (
           <button
             onClick={() => handleDeleteProductFromWishList(product.id)}
             className="star absolute right-4 top-4"
