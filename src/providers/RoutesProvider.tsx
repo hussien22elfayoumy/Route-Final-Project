@@ -17,6 +17,7 @@ import CategoryDetails from '../pages/CategoryDetails';
 import WishList from '../pages/WishList';
 import AllOrders from '../pages/AllOrders';
 import Checkout from '../pages/Checkout';
+import NotFound from '../components/NotFound';
 
 const router = createBrowserRouter([
   {
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
             <Checkout />
           </ProtectdRoute>
         ),
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
