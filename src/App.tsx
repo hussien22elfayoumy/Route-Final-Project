@@ -20,6 +20,7 @@ import ProductsDetails from './pages/ProductsDetails';
 import CategoryDetails from './pages/CategoryDetails';
 import BrandDetails from './pages/BrandDetails';
 import CartContextProvicer from './contexts/CartContext';
+import Checkout from './pages/Checkout';
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectdRoute type="protected">
             <AllOrders />
+          </ProtectdRoute>
+        ),
+      },
+      {
+        path: 'checkout',
+        element: (
+          <ProtectdRoute type="protected">
+            <Checkout />
           </ProtectdRoute>
         ),
       },

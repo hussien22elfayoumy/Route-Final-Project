@@ -116,9 +116,12 @@ export default function UserCart() {
                   colSpan={3}
                   className="p-1 text-left"
                 >
-                  <button className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base disabled:cursor-not-allowed disabled:opacity-30">
+                  <Link
+                    to="/checkout"
+                    className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base disabled:cursor-not-allowed disabled:opacity-30"
+                  >
                     Checkout now
-                  </button>
+                  </Link>
                 </td>
                 <td className="p-1">
                   <button

@@ -91,7 +91,7 @@
 - [x] Add Product To Cart `${BASE_URL}/cart`
 - Body: broduct id
 
-- [ ] Update cart product quantity `${BASE_URL}/cart/:id`
+- [x] Update cart product quantity `${BASE_URL}/cart/:id`
 - Body: count
 
 - [x] Get Logged user cart `${BASE_URL}/cart`
