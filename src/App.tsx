@@ -21,6 +21,7 @@ import CategoryDetails from './pages/CategoryDetails';
 import BrandDetails from './pages/BrandDetails';
 import CartContextProvicer from './contexts/CartContext';
 import Checkout from './pages/Checkout';
+import WishListContextProvider from './contexts/WishListContext';
 
 const router = createBrowserRouter([
   {
@@ -136,10 +137,12 @@ function App() {
   return (
     <UserContextProvider>
       <CartContextProvicer>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <WishListContextProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </WishListContextProvider>
       </CartContextProvicer>
     </UserContextProvider>
   );

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { IProduct } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
 import { useState } from 'react';
+import { FaRegStar, FaStar } from 'react-icons/fa6';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();
@@ -19,9 +20,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
     }
   };
 
+  const wishList = false;
+
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
-      <div className="h-[350px]">
+      <div className="relative h-[350px]">
         <Link to={`/products/${product.id}/${product.category.name}`}>
           <img
             className="h-[350px] w-full rounded-t-lg object-cover"
@@ -29,6 +32,13 @@ export default function ProductCard({ product }: { product: IProduct }) {
             alt={product.title}
           />
         </Link>
+        <button className="star absolute right-4 top-4">
+          {wishList ? (
+            <FaStar className="size-8 text-yellow-300" />
+          ) : (
+            <FaRegStar className="size-8" />
+          )}
+        </button>
       </div>
       <div className="mt-3 flex h-[calc(100%-360px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
