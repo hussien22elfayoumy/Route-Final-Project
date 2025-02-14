@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../utils/api';
 import { useCartCtx } from '../../contexts/CartContext';
+import { useState } from 'react';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();
+
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+
+  const handleClick = async () => {
+    setIsAddingToCart(true);
+    try {
+      await handleAddToCart(product.id);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsAddingToCart(false);
+    }
+  };
 
   return (
     <div className="mx-auto w-full max-w-sm rounded-lg border border-border-light bg-card-bg shadow-sm">
@@ -50,10 +64,11 @@ export default function ProductCard({ product }: { product: IProduct }) {
         <div className="mt-auto flex items-center justify-between">
           <span className="text-xl font-bold">{product.price} EGP</span>
           <button
-            onClick={() => handleAddToCart(product.id)}
-            className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base"
+            disabled={isAddingToCart}
+            onClick={handleClick}
+            className="rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base disabled:cursor-not-allowed disabled:opacity-30"
           >
-            Add to cart
+            {isAddingToCart ? 'Adding .. ..' : 'Add to cart'}
           </button>
         </div>
       </div>

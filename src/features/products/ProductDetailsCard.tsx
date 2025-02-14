@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { IProduct } from '../../utils/api';
 import ProductDetailsImageSlider from './ProductDetailsImageSlider';
+import { useCartCtx } from '../../contexts/CartContext';
 
 export default function ProductDetailsCard({
   productDetails,
 }: {
   productDetails: IProduct | undefined;
 }) {
+  const { handleAddToCart, addToCartLoading } = useCartCtx();
+
   return (
     <div className="mx-auto flex max-w-[1000px] flex-col items-center gap-5 md:flex-row">
       <div className="w-full md:w-1/3">
@@ -43,8 +46,12 @@ export default function ProductDetailsCard({
 
           <p className="text-xl font-bold">{productDetails?.price} EGP</p>
 
-          <button className="w-full rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base">
-            Add to cart
+          <button
+            disabled={addToCartLoading}
+            onClick={() => handleAddToCart(productDetails?.id!)}
+            className="w-full rounded-lg bg-color-base px-4 py-2 text-center text-sm font-medium text-white hover:bg-color-dark focus:outline-none focus:ring-4 focus:ring-color-base disabled:cursor-not-allowed disabled:opacity-30"
+          >
+            {addToCartLoading ? 'Adding to Cart' : 'Add to cart'}
           </button>
         </div>
       </div>
