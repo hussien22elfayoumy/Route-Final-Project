@@ -5,6 +5,7 @@ import { fetchAllProducts, fetchProductDetails } from '../utils/public-api';
 import ProductCard from '../features/products/ProductCard';
 import Loader from '../components/Loader';
 import { IProduct } from '../types/interfaces';
+import RelatedProducts from '../components/RelatedProducts';
 export default function ProductsDetails() {
   const { productId, category } = useParams();
   const [productDetails, setProductDetails] = useState<IProduct>();
@@ -61,17 +62,10 @@ export default function ProductsDetails() {
         <ProductDetailsCard productDetails={productDetails} />
       </section>
 
-      <section className="mt-10 border-t border-border-dark py-10">
-        <h2 className="mb-5 text-center text-xl font-semibold text-text-dark">Related Products</h2>
-        <div className="grid content-center gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {relatedProducts?.map((related) => (
-            <ProductCard
-              key={related.id}
-              product={related}
-            />
-          ))}
-        </div>
-      </section>
+      <RelatedProducts
+        relatedProducts={relatedProducts!}
+        title="Products"
+      />
     </>
   );
 }
