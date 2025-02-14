@@ -1,8 +1,8 @@
-import { FaMinus, FaPlus } from 'react-icons/fa6';
 import { useCartCtx } from '../../contexts/CartContext';
 import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 import UpdateCartItemsQty from './UpdateCartItemsQty';
+import { useState } from 'react';
 export default function UserCart() {
   const {
     userCart,
@@ -11,8 +11,15 @@ export default function UserCart() {
     isClearingCart,
     handleDeleteUserCart,
     handleDeleteCartItem,
-    isDeletingCartItem,
   } = useCartCtx();
+
+  const [deletingProductId, setDeletingProductId] = useState<string | null>(null);
+
+  async function handleDeleteItem(productId: string) {
+    setDeletingProductId(productId);
+    await handleDeleteCartItem(productId);
+    setDeletingProductId(null);
+  }
 
   if (isLoading) {
     return <Loader />;
@@ -91,8 +98,8 @@ export default function UserCart() {
                   <td className="px-6 py-4 font-semibold">{product.price} EGP</td>
                   <td className="px-6 py-4">
                     <button
-                      disabled={isDeletingCartItem}
-                      onClick={() => handleDeleteCartItem(product.product.id)}
+                      disabled={deletingProductId === product.product.id}
+                      onClick={() => handleDeleteItem(product.product.id)}
                       className="rounded-lg bg-red-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-500 disabled:cursor-not-allowed disabled:opacity-30"
                     >
                       Remove
