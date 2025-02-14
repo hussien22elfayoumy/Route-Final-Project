@@ -1,19 +1,22 @@
-import { createContext, useContext, useState } from 'react';
-import { addProductToCart } from '../utils/api';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { addProductToCart, fetchUserCart, UserCartResponse } from '../utils/api';
 import toast from 'react-hot-toast';
 
 interface ICartContext {
   handleAddToCart: (productId: string) => void;
   addToCartLoading: boolean;
+  userCart: UserCartResponse | null;
 }
 
 const cartContext = createContext<ICartContext>({
   handleAddToCart: () => {},
   addToCartLoading: false,
+  userCart: null,
 });
 
 export default function CartContextProvicer({ children }: Readonly<{ children: React.ReactNode }>) {
   const [addToCartLoading, setAddToCartLoading] = useState(false);
+  const [userCart, setUserCart] = useState<UserCartResponse | null>(null);
 
   async function handleAddToCart(productId: string) {
     try {
@@ -27,9 +30,24 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     }
   }
 
+  async function getUserCart() {
+    try {
+      const res = await fetchUserCart();
+      console.log(res);
+      setUserCart(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getUserCart();
+  }, []);
+
   const ctxValue = {
     handleAddToCart,
     addToCartLoading,
+    userCart,
   };
 
   return <cartContext.Provider value={ctxValue}>{children}</cartContext.Provider>;

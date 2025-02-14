@@ -99,9 +99,6 @@ export interface CartData {
   _id: string;
   cartOwner: string;
   products: CartProduct[];
-  createdAt: string;
-  updatedAt: string;
-  __v: number;
   totalCartPrice: number;
 }
 
@@ -136,6 +133,49 @@ export async function addProductToCart(productId: string): Promise<AddToCartResp
 
   if (!res.ok) {
     throw new Error(data.message || 'Failed to add product to cart.');
+  }
+
+  return data;
+}
+
+export interface UserCartProduct {
+  count: number;
+  _id: string;
+  product: IProduct;
+  price: number;
+}
+
+export interface UserCart {
+  _id: string;
+  cartOwner: string;
+  products: UserCartProduct[];
+  totalCartPrice: number;
+}
+
+export interface UserCartResponse {
+  status: string;
+  numOfCartItems: number;
+  cartId: string;
+  data: UserCart;
+}
+
+export async function fetchUserCart(): Promise<UserCartResponse> {
+  const userToken = JSON.parse(localStorage.getItem('loggedInUser')!)?.token;
+
+  if (!userToken) {
+    throw new Error('You need to Login first.');
+  }
+
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/cart`, {
+    method: 'GET',
+    headers: {
+      token: userToken,
+    },
+  });
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to get user cart.');
   }
 
   return data;
