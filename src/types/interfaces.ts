@@ -43,7 +43,7 @@ interface IUser {
 export interface CartProduct {
   count: number;
   _id: string;
-  product: string | IProduct; // Can be either a string (ID) or the full product object
+  product: IProduct;
   price: number;
 }
 
