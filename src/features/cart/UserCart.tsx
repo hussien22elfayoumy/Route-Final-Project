@@ -3,6 +3,7 @@ import Loader from '../../components/Loader';
 import { Link } from 'react-router-dom';
 import UpdateCartItemsQty from './UpdateCartItemsQty';
 import { useState } from 'react';
+import { formatCurrency } from '../../utils/formatCurrency';
 export default function UserCart() {
   const {
     userCart,
@@ -95,7 +96,7 @@ export default function UserCart() {
                       qty={product.count}
                     />
                   </td>
-                  <td className="px-6 py-4 font-semibold">{product.price} EGP</td>
+                  <td className="px-6 py-4 font-semibold">{formatCurrency(product.price)}</td>
                   <td className="px-6 py-4">
                     <button
                       disabled={deletingProductId === product.product.id}
@@ -108,12 +109,13 @@ export default function UserCart() {
                 </tr>
               ))}
               <tr className="border-b">
-                <td className="px-6 py-3 text-left text-lg font-semibold">
-                  Total Cart: {userCart?.data.totalCartPrice} EGP
+                <td className="px-6 py-3 pe-1 text-right text-lg font-semibold">Total Cart:</td>
+                <td className="px-6 py-3 ps-1 text-left text-base font-semibold">
+                  {formatCurrency(userCart?.data.totalCartPrice!)}
                 </td>
 
                 <td
-                  colSpan={3}
+                  colSpan={2}
                   className="p-1 text-left"
                 >
                   <Link
