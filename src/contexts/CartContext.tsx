@@ -20,6 +20,7 @@ interface ICartContext {
   error: string;
   handleDeleteUserCart: () => void;
   isClearingCart: boolean;
+  setUserCart: React.Dispatch<React.SetStateAction<UserCartResponse | null>>;
 }
 
 const cartContext = createContext<ICartContext>({
@@ -32,6 +33,7 @@ const cartContext = createContext<ICartContext>({
   isLoading: false,
   error: '',
   isClearingCart: false,
+  setUserCart: () => {},
 });
 
 export default function CartContextProvicer({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -113,7 +115,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
 
   useEffect(() => {
     getUserCart();
-  }, []);
+  }, [user]);
 
   const ctxValue = {
     handleAddToCart,
@@ -125,6 +127,7 @@ export default function CartContextProvicer({ children }: Readonly<{ children: R
     isClearingCart,
     handleDeleteCartItem,
     handleUpdateCartItem,
+    setUserCart,
   };
 
   return <cartContext.Provider value={ctxValue}>{children}</cartContext.Provider>;

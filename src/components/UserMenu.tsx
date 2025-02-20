@@ -10,8 +10,8 @@ import { useWishListContext } from '../contexts/WishListContext';
 export default function UserMenu() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const { user, handleUser } = useUserCtx();
-  const { userCart } = useCartCtx();
-  const { userWishList } = useWishListContext();
+  const { userCart, setUserCart } = useCartCtx();
+  const { userWishList, setUserWishList } = useWishListContext();
 
   return (
     <div className="relative">
@@ -80,7 +80,11 @@ export default function UserMenu() {
           </li>
           <li className="mt-2 px-2 text-center">
             <button
-              onClick={() => handleLogout(handleUser)}
+              onClick={() => {
+                handleLogout(handleUser);
+                setUserWishList(null);
+                setUserCart(null);
+              }}
               type="button"
               className="flex w-full items-center justify-center gap-1 rounded-lg bg-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-600"
             >

@@ -1,8 +1,8 @@
-import { Form, Link } from 'react-router-dom';
-import ProductDetailsImageSlider from './ProductDetailsImageSlider';
+import { Link } from 'react-router-dom';
 import { useCartCtx } from '../../contexts/CartContext';
 import { IProduct } from '../../types/interfaces';
 import { formatCurrency } from '../../utils/formatCurrency';
+import ProductDetailsImageSlider from './ProductDetailsImageSlider';
 
 export default function ProductDetailsCard({
   productDetails,

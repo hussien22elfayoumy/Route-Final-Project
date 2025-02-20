@@ -14,6 +14,7 @@ interface WishListCxtType {
   userWishList: UserWishListResponse | null;
   handleAddProductToWishList: (productId: string) => void;
   handleDeleteProductFromWishList: (productId: string) => void;
+  setUserWishList: React.Dispatch<React.SetStateAction<UserWishListResponse | null>>;
 }
 const WishListContext = createContext<WishListCxtType>({
   isLoading: false,
@@ -21,6 +22,7 @@ const WishListContext = createContext<WishListCxtType>({
   userWishList: null,
   handleAddProductToWishList: () => {},
   handleDeleteProductFromWishList: () => {},
+  setUserWishList: () => {},
 });
 
 export default function WishListContextProvider({
@@ -69,7 +71,7 @@ export default function WishListContextProvider({
 
   useEffect(() => {
     getUserWishList();
-  }, []);
+  }, [user]);
 
   const ctxValue = {
     isLoading,
@@ -77,6 +79,7 @@ export default function WishListContextProvider({
     userWishList,
     handleAddProductToWishList,
     handleDeleteProductFromWishList,
+    setUserWishList,
   };
 
   return <WishListContext.Provider value={ctxValue}>{children}</WishListContext.Provider>;
