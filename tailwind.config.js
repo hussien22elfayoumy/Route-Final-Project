@@ -3,6 +3,14 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      backgroundImage: {
+        'products-pattern':
+          'linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/products-banner.jpg)',
+        'categories-pattern':
+          'linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/categories-banner.jpg)',
+        'brands-pattern':
+          'linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/brands-banner.jpg)',
+      },
       colors: {
         'text-base': '#4b5563',
         'text-dark': '#3f3f46',
