@@ -3,7 +3,7 @@ import AllBrands from '../features/brands/AllBrands';
 export default function Brands() {
   return (
     <section className="pb-10 pt-5">
-      <header className="bg-products-pattern mb-5 flex h-[350px] flex-col items-center justify-center gap-5 rounded-lg bg-cover bg-center px-5 tracking-wide">
+      <header className="mb-5 flex h-[350px] flex-col items-center justify-center gap-5 rounded-lg bg-brands-pattern bg-cover bg-center px-5 tracking-wide">
         <h2 className="text-center text-5xl font-bold text-slate-50">
           Shop by <span className="text-color-light">Brand</span>
         </h2>
