@@ -4,7 +4,7 @@ import Loader from '../components/Loader';
 import { useUserCtx } from '../contexts/UserContext';
 import { useUserOrders } from '../hooks/useUserOrders';
 import { formatCurrency } from '../utils/formatCurrency';
-import OrderItemsDetails from '../features/allOrders/orderItemsDetails';
+import OrderItemsDetails from '../features/allOrders/OrderItemsDetails';
 
 export default function AllOrders() {
   const { user } = useUserCtx();
