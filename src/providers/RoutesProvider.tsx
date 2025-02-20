@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'login',
+        path: '/login',
         element: (
           <ProtectdRoute type="public">
             <Login />
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'sign-up',
+        path: '/sign-up',
         element: (
           <ProtectdRoute type="public">
             <Signup />
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'forgot-password',
+        path: '/forgot-password',
         element: (
           <ProtectdRoute type="public">
             <ForgotPassword />{' '}
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'reset-password',
+        path: '/reset-password',
         element: (
           <ProtectdRoute type="public">
             <ResetPassword />{' '}
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'verify-code',
+        path: '/verify-code',
         element: (
           <ProtectdRoute type="public">
             <VerifyResetCode />{' '}
@@ -69,15 +69,15 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'products',
+        path: '/products',
         element: <Products />,
       },
       {
-        path: 'products/:productId/:category',
+        path: '/products/:productId/:category',
         element: <ProductsDetails />,
       },
       {
-        path: 'cart',
+        path: '/cart',
         element: (
           <ProtectdRoute type="protected">
             <Cart />
@@ -85,23 +85,23 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'brands',
+        path: '/brands',
         element: <Brands />,
       },
       {
-        path: 'brands/:brandsId/:brand',
+        path: '/brands/:brandsId/:brand',
         element: <BrandDetails />,
       },
       {
-        path: 'categories',
+        path: '/categories',
         element: <Categories />,
       },
       {
-        path: 'categories/:categoryId/:category',
+        path: '/categories/:categoryId/:category',
         element: <CategoryDetails />,
       },
       {
-        path: 'wishList',
+        path: '/wishList',
         element: (
           <ProtectdRoute type="protected">
             <WishList />
@@ -109,7 +109,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'allorders',
+        path: '/allorders',
         element: (
           <ProtectdRoute type="protected">
             <AllOrders />
@@ -117,7 +117,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: 'checkout',
+        path: '/checkout',
         element: (
           <ProtectdRoute type="protected">
             <Checkout />

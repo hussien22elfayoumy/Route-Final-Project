@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import ProductDetailsImageSlider from './ProductDetailsImageSlider';
 import { useCartCtx } from '../../contexts/CartContext';
 import { IProduct } from '../../types/interfaces';
+import { formatCurrency } from '../../utils/formatCurrency';
+import ProductDetailsImageSlider from './ProductDetailsImageSlider';
 
 export default function ProductDetailsCard({
   productDetails,
@@ -44,7 +45,7 @@ export default function ProductDetailsCard({
             </span>
           </div>
 
-          <p className="text-xl font-bold">{productDetails?.price} EGP</p>
+          <p className="text-xl font-bold">{formatCurrency(productDetails?.price!)}</p>
 
           <button
             disabled={isAddingToCart}

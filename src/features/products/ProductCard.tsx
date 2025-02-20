@@ -1,9 +1,10 @@
+import { useState } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
 import { useCartCtx } from '../../contexts/CartContext';
-import { useState } from 'react';
-import { FaRegStar, FaStar } from 'react-icons/fa6';
 import { useWishListContext } from '../../contexts/WishListContext';
 import { IProduct } from '../../types/interfaces';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function ProductCard({ product }: { product: IProduct }) {
   const { handleAddToCart } = useCartCtx();
@@ -40,20 +41,22 @@ export default function ProductCard({ product }: { product: IProduct }) {
             onClick={() => handleDeleteProductFromWishList(product.id)}
             className="star absolute right-4 top-4"
           >
-            <FaStar className="size-8 text-yellow-300" />
+            <FaHeart className="size-7 text-yellow-300" />
           </button>
         ) : (
           <button
             onClick={() => handleAddProductToWishList(product.id)}
             className="star absolute right-4 top-4"
           >
-            <FaRegStar className="size-8" />
+            <FaRegHeart className="size-7" />
           </button>
         )}
       </div>
       <div className="mt-3 flex h-[calc(100%-360px)] flex-col gap-3 px-5 pb-5">
         <div className="flex items-center justify-between">
-          <p className="font-semibold tracking-tight text-color-base">{product.category.name}</p>
+          <p className="text-sm font-semibold tracking-tight text-color-base">
+            {product.category.name}
+          </p>
 
           <div className="flex items-center">
             <div className="l flex items-center justify-between space-x-1 rtl:space-x-reverse">
@@ -73,17 +76,17 @@ export default function ProductCard({ product }: { product: IProduct }) {
           </div>
         </div>
 
-        <h5 className="mb-5 text-lg font-semibold tracking-tight text-text-dark">
+        <h5 className="mb-5 font-semibold tracking-tight text-text-dark">
           <Link
             to={`/products/${product.id}/${product.category.name}`}
-            className="truncate"
+            className=""
           >
-            {product.title.slice(0, 30)} ...
+            {product.title.slice(0, 25)} ...
           </Link>
         </h5>
 
         <div className="mt-auto flex items-center justify-between">
-          <span className="text-xl font-bold">{product.price} EGP</span>
+          <span className="text-lg font-semibold">{formatCurrency(product.price)}</span>
           <button
             disabled={isAddingToCart}
             onClick={handleClick}

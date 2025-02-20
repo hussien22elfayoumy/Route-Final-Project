@@ -10,8 +10,8 @@ import { useWishListContext } from '../contexts/WishListContext';
 export default function UserMenu() {
   const [openUserMenu, setOpenUserMenu] = useState(false);
   const { user, handleUser } = useUserCtx();
-  const { userCart } = useCartCtx();
-  const { userWishList } = useWishListContext();
+  const { userCart, setUserCart } = useCartCtx();
+  const { userWishList, setUserWishList } = useWishListContext();
 
   return (
     <div className="relative">
@@ -37,8 +37,10 @@ export default function UserMenu() {
         } list-none divide-y divide-gray-100 rounded-lg bg-slate-50 text-base shadow-sm`}
         id="user-dropdown"
       >
-        <div className="w-[150px] border-b border-b-gray-300 px-2 py-2">
-          <p className="block text-center text-sm font-thin text-gray-900">{user?.name}</p>
+        <div className="min-w-[150px] border-b border-b-gray-300 px-2 py-2">
+          <p className="block text-nowrap text-center text-sm font-thin text-gray-900">
+            {user?.name}
+          </p>
         </div>
         <ul
           className="py-2"
@@ -52,35 +54,39 @@ export default function UserMenu() {
               All Orders
             </NavLink>
           </li>
-          <li className="relative">
+          <li className="flex items-center gap-1">
             <NavLink
               to="/wishlist"
-              className="block rounded-sm px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
+              className="block rounded-sm py-2 ps-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
             >
               WishList
             </NavLink>
             {userWishList?.count! > 0 && (
-              <div className="full absolute left-[64px] top-[0px] flex size-4 items-center justify-center rounded-full bg-yellow-300/80 text-xs font-semibold">
+              <div className="flex size-4 items-center justify-center rounded-full bg-yellow-300/80 text-xs font-semibold">
                 {userWishList?.count}
               </div>
             )}
           </li>
-          <li className="relative">
+          <li className="flex items-center gap-1">
             <NavLink
               to="/cart"
-              className="block rounded-sm px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
+              className="block rounded-sm py-2 ps-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-emerald-600 md:hover:bg-transparent md:hover:text-emerald-600"
             >
               Cart
             </NavLink>
             {userCart?.numOfCartItems! > 0 && (
-              <div className="full absolute left-[38px] top-[0px] flex size-4 items-center justify-center rounded-full bg-color-base/80 text-xs text-white">
+              <div className="flex size-4 items-center justify-center rounded-full bg-color-base/80 text-xs text-white">
                 {userCart?.numOfCartItems}
               </div>
             )}
           </li>
           <li className="mt-2 px-2 text-center">
             <button
-              onClick={() => handleLogout(handleUser)}
+              onClick={() => {
+                handleLogout(handleUser);
+                setUserWishList(null);
+                setUserCart(null);
+              }}
               type="button"
               className="flex w-full items-center justify-center gap-1 rounded-lg bg-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-600"
             >

@@ -1,3 +1,4 @@
+// NOTE: Shared Interfaces
 export interface ICategory {
   name: string;
   image: string;
@@ -25,12 +26,24 @@ export interface IProduct {
   brand: IBrand;
 }
 
-// TODO cart
+interface IShippingAddress {
+  details: string;
+  phone: string;
+  city: string;
+}
 
+interface IUser {
+  _id: string;
+  name: string;
+  email: string;
+  phone: string;
+}
+
+// NOTE: Cart Interfaces
 export interface CartProduct {
   count: number;
   _id: string;
-  product: string;
+  product: IProduct;
   price: number;
 }
 
@@ -49,19 +62,11 @@ export interface AddToCartResponse {
   data: CartData;
 }
 
-// TODO: User Cart
-
-export interface UserCartProduct {
-  count: number;
-  _id: string;
-  product: IProduct;
-  price: number;
-}
-
+// NOTE: User Cart Interfaces
 export interface UserCart {
   _id: string;
   cartOwner: string;
-  products: UserCartProduct[];
+  products: CartProduct[];
   totalCartPrice: number;
 }
 
@@ -72,10 +77,26 @@ export interface UserCartResponse {
   data: UserCart;
 }
 
-// TODO: User WishList
-
+// NOTE: User Wishlist Interfaces
 export interface UserWishListResponse {
   status: string;
   count: number;
   data: IProduct[];
+}
+
+// NOTE: User Orders Interfaces
+
+export interface OrderResponse {
+  shippingAddress: IShippingAddress;
+  taxPrice: number;
+  shippingPrice: number;
+  totalOrderPrice: number;
+  paymentMethodType: string;
+  isPaid: boolean;
+  isDelivered: boolean;
+  user: IUser;
+  cartItems: CartProduct[];
+  createdAt: string;
+  updatedAt: string;
+  id: number;
 }
