@@ -42,7 +42,7 @@ export default function UserContextProvider({ children }: Readonly<{ children: R
 
   useEffect(() => {
     handleVerifyToken();
-  }, []);
+  }, [user]);
 
   const ctxValue = {
     user,
