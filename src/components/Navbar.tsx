@@ -10,7 +10,7 @@ export default function Navbar() {
   const { user } = useUserCtx();
   const { userCart } = useCartCtx();
   return (
-    <nav className="fixed start-0 top-0 z-20 w-full border-b border-border-light bg-card-bg px-4 py-4 shadow-sm md:px-12">
+    <nav className="fixed start-0 top-0 z-20 w-full border-b border-border-light bg-card-bg px-4 py-4 shadow-sm md:px-16">
       <div className="container mx-auto">
         <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
           <Link

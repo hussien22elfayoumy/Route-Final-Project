@@ -33,7 +33,7 @@ export default function UserCart() {
   return (
     <>
       {userCart?.numOfCartItems! > 0 ? (
-        <div className="relative mx-auto max-w-[1000px] overflow-x-auto border border-border-light shadow-sm sm:rounded-lg">
+        <div className="relative mx-auto overflow-x-auto border border-border-light shadow-sm sm:rounded-lg">
           <table className="w-full text-center text-sm">
             <thead className="border-b-border-dark bg-gray-100 text-xs font-bold uppercase">
               <tr>
@@ -53,7 +53,7 @@ export default function UserCart() {
                   scope="col"
                   className="px-6 py-3"
                 >
-                  Qty
+                  Quantity
                 </th>
                 <th
                   scope="col"
@@ -78,7 +78,7 @@ export default function UserCart() {
                   <td className="p-4">
                     <img
                       src={product.product.imageCover}
-                      className="max-h-full w-10 max-w-full md:w-32"
+                      className="max-h-full w-10 max-w-full md:w-20"
                       alt={product.product.title}
                     />
                   </td>
