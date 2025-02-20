@@ -12,7 +12,7 @@ export default function Navbar() {
   return (
     <nav className="fixed start-0 top-0 z-20 w-full border-b border-border-light bg-card-bg px-4 py-4 shadow-sm md:px-16">
       <div className="container mx-auto">
-        <div className="flex max-w-screen-xl flex-wrap items-center justify-between">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
           <Link
             to="/"
             className="flex items-center space-x-3"
@@ -41,7 +41,7 @@ export default function Navbar() {
               onClick={() => setIsOpen((prev) => !prev)}
               data-collapse-toggle="navbar-sticky"
               type="button"
-              className="inline-flex size-8 items-center justify-center rounded-lg text-sm text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden dark:text-gray-400 dark:focus:ring-emerald-600"
+              className="inline-flex size-8 items-center justify-center rounded-lg text-sm text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:focus:ring-emerald-600 md:hidden"
               aria-controls="navbar-sticky"
               aria-expanded="false"
             >
