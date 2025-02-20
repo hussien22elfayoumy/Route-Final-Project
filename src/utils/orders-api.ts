@@ -10,7 +10,7 @@ export async function onCheckoutFormSubmit(values: CheckOutFormType, cartId: str
 
   try {
     const res = await fetch(
-      `${import.meta.env.VITE_BASE_URL}/orders/checkout-session/${cartId}?url=https://route-final-project.vercel.app`,
+      `${import.meta.env.VITE_BASE_URL}/orders/checkout-session/${cartId}?url=${import.meta.env.VITE_REDRICT_URL}`,
       {
         method: 'POST',
         headers: {
