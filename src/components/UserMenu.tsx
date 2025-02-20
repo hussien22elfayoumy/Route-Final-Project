@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { HiArrowLeftStartOnRectangle } from 'react-icons/hi2';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useUserCtx } from '../contexts/UserContext';
 import { handleLogout } from '../utils/auth-api';
 import UserImg from '../assets/userImg.png';
@@ -12,6 +12,7 @@ export default function UserMenu() {
   const { user, handleUser } = useUserCtx();
   const { userCart, setUserCart } = useCartCtx();
   const { userWishList, setUserWishList } = useWishListContext();
+  const navigate = useNavigate();
 
   return (
     <div className="relative">
@@ -84,6 +85,7 @@ export default function UserMenu() {
             <button
               onClick={() => {
                 handleLogout(handleUser);
+                navigate('/');
                 setUserWishList(null);
                 setUserCart(null);
               }}
