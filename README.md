@@ -1,50 +1,131 @@
-# React + TypeScript + Vite
+# Fresh Cart App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Table of Contents
 
-Currently, two official plugins are available:
+- [Introduction](#introduction)
+- [Features](#features)
+- [Web Pages](#web-pages)
+- [Code Structure](#code-structure)
+- [Power Up Instructions (developers)](#power-up-instructions-developers)
+- [Website Link](#website-link)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
 
-## Expanding the ESLint configuration
+Fresh Cart is a modern e-commerce platform built with React, TypeScript, and Tailwind CSS. It offers a seamless shopping experience with a complete authentication flow, product browsing, cart management, wishlist, and online payment integration. The app is designed to be fully responsive, ensuring a smooth experience across all devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Complete Authentication Flow:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+  - Sign-up, Login, logout, Forget Password, and Reset Password.
+
+- Product Browsing:
+
+  - Explore products by categories, brands, and more.
+
+- Cart Management:
+
+  - Add, remove, and update items in the cart.
+
+- Wishlist:
+
+  - Save products for later purchase.
+
+- Order Management:
+
+  - View order history and track ongoing orders.
+
+- Online Payment:
+
+  - Secure payment integration for a seamless checkout experience.
+
+- Fully Responsive:
+
+  - Optimized for desktop, tablet, and mobile devices.
+
+## Web Pages
+
+1. Home Page:
+
+- Discover recent products, categories, and brands.
+
+2. Products Page:
+
+- Browse products by categories, brands, or search for specific items.
+
+3. Product Details Page:
+
+- View detailed information about a product, including images, descriptions, and reviews.
+
+4. Categories Page:
+
+- Explore products organized by categories for easy navigation.
+
+5. Brands Page:
+
+- Discover products from your favorite brands.
+
+6. Cart Page:
+
+- Manage items in your cart and proceed to checkout.
+
+7. Wishlist Page:
+
+- View and manage your saved products.
+
+8. Orders Page:
+
+- Track your order history and view order details.
+
+9. Authentication Pages:
+
+- Sign-up, Login, Forget Password, and Reset Password.
+
+## Code Structure
+
+```sh
+Route-Rinal-Project/
+	├── public/
+	└── src/
+		├── assets/
+		├── components/
+		├── contexts/
+		├── features/
+		├── hooks/
+		├── layouts/
+		├── pages/
+		├── providers/
+		├── types/
+		├── utils/
+		├── index.css
+		├── App.tsx
+		└── main.tsx
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Power Up Instructions (developers)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```sh
+   git clone <repository-url>
+   ```
+
+2. Navigate to the frontend directory and install dependencies
+
+   ```sh
+   cd Route-Rinal-Project && yarn
+   ```
+
+3. Set Up Environment Variables
+
+   Create a `.env` file in the root directory with the required environment variables (API URL, authentication keys, etc.).
+
+4. Start the frontend development server:
+
+   ```sh
+   yarn dev
+   ```
+
+## Website Link
+
+Or you just can vist the website and try it your self [here](https://route-final-project.vercel.app/)

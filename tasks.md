@@ -102,7 +102,7 @@
 
 ### Orders
 
-- [ ] getUserOrders `${BASE_URL}/orders/user/:userId`
+- [x] getUserOrders `${BASE_URL}/orders/user/:userId`
 
 - [x] Checkout session `${BASE_URL}/orders/checkout-session/66c91634ed0dc0016c217bb3?url=http://localhost:3000`
 - Form data: shippingAddress
@@ -113,7 +113,7 @@
 
 # tasks to complete
 
-- [ ] User order page
-- [ ] Update the ui of cart and wishlist after new user login
-- [ ] Check on some desings and make it better
-- [ ] Add Readme file to explain the project
+- [x] User order page
+- [x] Update the ui of cart and wishlist after new user login
+- [x] Check on some desings and make it better
+- [x] Add Readme file to explain the project
