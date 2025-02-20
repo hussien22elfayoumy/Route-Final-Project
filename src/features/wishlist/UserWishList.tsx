@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
-import Loader from '../../components/Loader';
 import { useWishListContext } from '../../contexts/WishListContext';
 import ProductCard from '../products/ProductCard';
 
 export default function UserWishList() {
-  const { isLoading, error: wishLishError, userWishList } = useWishListContext();
+  const { error: wishLishError, userWishList } = useWishListContext();
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   if (wishLishError) {
     return <p className="text-center text-lg font-bold text-red-600">{wishLishError}</p>;
